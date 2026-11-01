@@ -450,7 +450,7 @@ export default function MarketplaceHubPortal() {
             <div className="flex items-center gap-3 shrink-0 flex-wrap">
               <Link
                 to="/become-seller"
-                className="px-5 py-3 rounded-2xl bg-[var(--pm-accent)] hover:brightness-110 text-white text-xs font-black shadow-lg shadow-indigo-600/25 transition-all"
+                className="px-5 py-3 rounded-2xl bg-[var(--pm-accent)] hover:brightness-110 text-white text-xs font-black shadow-lg shadow-[var(--pm-accent)]/25 transition-all"
               >
                 সেলার অ্যাকাউন্ট খুলুন
               </Link>
