@@ -404,9 +404,9 @@ export default function ProductDetailsView() {
                 <span className="font-bold text-white">{product.rating}</span>
                 <span className="text-[var(--pm-text-secondary)]">({product.reviews} রিভিউ)</span>
               </div>
-              <span className="text-zinc-700">·</span>
+              <span className="text-[var(--pm-muted)]">·</span>
               <span className="text-[var(--pm-text-secondary)]">{product.sold} টি ডেলিভারি সম্পন্ন</span>
-              <span className="text-zinc-700">·</span>
+              <span className="text-[var(--pm-muted)]">·</span>
               <span className="text-[var(--pm-muted)] font-mono text-[10px]">EAN: {product.barcode}</span>
             </div>
 
