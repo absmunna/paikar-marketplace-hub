@@ -3,16 +3,10 @@
   --pm-bg: #07080b;
   --pm-surface: #0d0f14;
   --pm-card: #12141b;
-  --pm-card-hover: #191c24;
-  --pm-text: #f5f6f8;
-  --pm-muted: #8e929c;
-  --pm-border: rgba(255, 255, 255, 0.06);
-  --pm-glass: rgba(13, 15, 20, 0.85);
-  --pm-accent: #ff7a00;
-  --pm-accent-hover: #ff9124;
-  --pm-accent-soft: rgba(255, 122, 0, 0.14);
+  --pm-card-hover: var(--pm-card);
+  --pm-accent-soft: color-mix(in oklab, var(--pm-accent) 14%, transparent);
   --pm-accent-2: #22d3ee;
-  --pm-accent-2-soft: rgba(34, 211, 238, 0.1);
+  --pm-accent-2-soft: color-mix(in oklab, var(--pm-accent-2) 12%, transparent);
   --pm-success: #34d399;
   --pm-danger: #f87171;
 }
