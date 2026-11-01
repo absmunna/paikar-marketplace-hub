@@ -452,7 +452,7 @@ export const B2CHome = () => {
               className={`px-3 py-1 rounded-xl text-[9px] font-black tracking-wide shrink-0 transition-all ${
                 sortBy === opt.id
                   ? 'bg-[var(--pm-accent)] text-white scale-[1.02]'
-                  : 'bg-[var(--pm-surface)] text-[var(--pm-text-secondary)] border border-white/[0.03] active:scale-95'
+                  : 'bg-[var(--pm-surface)] text-[var(--pm-text-secondary)] border border-[var(--pm-border)] active:scale-95'
               }`}
             >
               {opt.label}
@@ -756,7 +756,7 @@ export const B2CHome = () => {
           <div className="flex items-center justify-between text-xs select-none gap-2">
             <span className="text-[var(--pm-text-secondary)] font-black uppercase tracking-wider">ডিল অনুসন্ধান ফলাফল ({sortedFilteredProducts.length})</span>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold text-[var(--pm-text-secondary)] bg-[var(--pm-card-hover)] px-2.5 py-1 rounded-lg border border-white/10">
+              <span className="text-[10px] font-bold text-[var(--pm-text-secondary)] bg-[var(--pm-card-hover)] px-2.5 py-1 rounded-lg border border-[var(--pm-border)]">
                 {effectiveCategory !== 'all' ? effectiveCategory.toUpperCase() : 'সব পণ্য'}{effectiveSub ? ` > ${effectiveSub}` : ''}
               </span>
               <button
@@ -779,8 +779,8 @@ export const B2CHome = () => {
           </div>
 
           {sortedFilteredProducts.length === 0 ? (
-            <div className="py-20 text-center rounded-3xl bg-[var(--pm-surface)]/40 border border-white/5 flex flex-col items-center">
-              <Layers className="w-12 h-12 text-zinc-600 mb-3 animate-bounce" />
+            <div className="py-20 text-center rounded-3xl bg-[var(--pm-surface)]/40 border border-[var(--pm-border)] flex flex-col items-center">
+              <Layers className="w-12 h-12 text-[var(--pm-muted)] mb-3 animate-bounce" />
               <p className="text-xs font-black text-[var(--pm-text)]">দুঃখিত, কোনো মিল খুঁজে পাওয়া যায়নি</p>
               <p className="text-[10px] text-[var(--pm-text-secondary)] font-bold mt-1 max-w-[200px]">অনুগ্রহ করে অন্য শব্দ নিয়ে পুনরায় খুঁজুন অথবা ক্যাটাগরি পরিবর্তন করুন।</p>
             </div>
@@ -840,13 +840,13 @@ export const B2CHome = () => {
               </div>
               <div className="text-left">
                 <p className="text-[8px] text-[var(--pm-text-secondary)] font-black uppercase">মোট কার্ট বিল</p>
-                <p className="text-sm font-black text-white">৳{cartTotalValue.toLocaleString()}</p>
+                <p className="text-sm font-black text-[var(--pm-text)]">৳{cartTotalValue.toLocaleString()}</p>
               </div>
             </div>
 
             <button 
               onClick={handleTriggerCheckout}
-              className="bg-white hover:bg-neutral-100 text-black px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wider flex items-center gap-1 outline-none"
+              className="bg-[var(--pm-accent)] hover:brightness-110 text-white px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wider flex items-center gap-1 outline-none"
             >
               চেকআউট করুন <ChevronRight className="w-3.5 h-3.5" />
             </button>
@@ -875,13 +875,13 @@ export const B2CHome = () => {
                 <Award className="w-6 h-6" />
               </div>
               <div className="space-y-1.5">
-                <h3 className="text-sm font-black text-white">লগইন প্রয়োজন (B2C Authentication)</h3>
+                <h3 className="text-sm font-black text-[var(--pm-text)]">লগইন প্রয়োজন (B2C Authentication)</h3>
                 <p className="text-[10px] text-[var(--pm-text-secondary)] leading-relaxed font-semibold">সম্মানিত ভিজিটর, গেস্ট অ্যাকাউন্ট থেকে সরাসরি অর্ডার প্লেস করা সীমিত। অর্ডার সম্পন্ন করতে অনুগ্রহ করে লগইন করুন।</p>
               </div>
               <div className="flex gap-2 text-[10px] font-black select-none">
                 <button 
                   onClick={() => setShowGuestWarn(false)}
-                  className="flex-1 py-3.5 rounded-xl bg-[var(--pm-card-hover)] border border-white/10 text-white"
+                  className="flex-1 py-3.5 rounded-xl bg-[var(--pm-card-hover)] border border-[var(--pm-border)] text-white"
                 >
                   পরে করব
                 </button>
@@ -909,7 +909,7 @@ export const B2CHome = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative p-8 rounded-3xl bg-[var(--pm-surface)] border border-white/10 max-w-xs text-center space-y-5 z-20 flex flex-col items-center"
+              className="relative p-8 rounded-3xl bg-[var(--pm-surface)] border border-[var(--pm-border)] max-w-xs text-center space-y-5 z-20 flex flex-col items-center"
             >
               {/* Pulsing microphone animation nodes */}
               <div className="relative">
