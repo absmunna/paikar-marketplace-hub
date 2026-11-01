@@ -14,10 +14,10 @@ export const PortalLayout = ({ children, portalName, accentColor }: PortalLayout
   const navigate = useNavigate();
   return (
     <MainLayout>
-      <header className="sticky top-0 z-50 glass h-[60px] flex items-center px-4 border-b" style={{ borderColor: accentColor }}>
-        <button 
+      <header className="sticky top-0 z-50 glass h-[60px] flex items-center px-4 border-b border-[var(--pm-border)]">
+        <button
           onClick={() => safeBack(navigate, '/')}
-          className="p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer text-white"
+          className="p-1 rounded-lg transition-colors cursor-pointer text-[var(--pm-text)] hover:bg-[var(--pm-card-hover)]"
           title="ফিরে যান"
         >
           <ChevronLeft className="w-5 h-5" />
