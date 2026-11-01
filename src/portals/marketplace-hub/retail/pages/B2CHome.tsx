@@ -526,7 +526,7 @@ export const B2CHome = () => {
                   className={`h-1.5 rounded-full transition-all ${
                     activeHeroSlide === i 
                       ? 'w-4 bg-[var(--pm-accent)]' 
-                      : 'w-1.5 bg-white/30 hover:bg-white/60'
+                      : 'w-1.5 bg-[var(--pm-border)] hover:bg-[var(--pm-muted)]'
                   }`}
                   title={`স্লাইড ${i + 1}`}
                 />
@@ -535,9 +535,9 @@ export const B2CHome = () => {
           </section>
           
           {/* FLASH DEALS COUNTDOWN TIMER COMPONENT */}
-          <section className="p-4 rounded-3xl bg-gradient-to-br from-red-600/10 via-orange-600/5 to-transparent border border-red-500/15">
+          <section className="p-4 rounded-3xl bg-[var(--pm-card)] border border-[var(--pm-border)]">
             <div className="flex items-center justify-between mb-3.5">
-              <div className="flex items-center gap-1.5 text-xs font-black text-white select-none">
+              <div className="flex items-center gap-1.5 text-xs font-black text-[var(--pm-text)] select-none">
                 <Zap className="w-4.5 h-4.5 text-red-500 fill-red-500" />
                 <span>ফ্ল্যাশ সেল</span>
                 <span className="bg-red-600 font-mono text-[9px] text-white px-2 py-0.5 rounded ml-1 animate-pulse">৩ ঘণ্টা বাকি</span>
@@ -567,12 +567,12 @@ export const B2CHome = () => {
                       </span>
                     </div>
                     <div className="text-left space-y-0.5 select-none">
-                      <h4 className="text-[10px] font-black text-white leading-snug truncate">{prod.title}</h4>
+                      <h4 className="text-[10px] font-black text-[var(--pm-text)] leading-snug truncate">{prod.title}</h4>
                       <p className="text-xs font-semibold text-red-500">৳{prod.price}</p>
                     </div>
                     {/* Compact stock bar */}
                     <div className="w-full h-1 bg-[var(--pm-card-hover)] rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-red-600 to-amber-500" style={{ width: `${claimed}%` }} />
+                      <div className="h-full bg-[var(--pm-danger)]" style={{ width: `${claimed}%` }} />
                     </div>
                   </div>
                 );
@@ -582,19 +582,19 @@ export const B2CHome = () => {
 
           {/* BRAND HIGHLIGHTS CAROUSEL */}
           <section className="space-y-3 select-none">
-            <h3 className="text-[11px] font-black uppercase text-zinc-400 tracking-wider">সেরা ব্র্যান্ড সমূহ</h3>
+            <h3 className="text-[11px] font-black uppercase text-[var(--pm-text)] tracking-wider">সেরা ব্র্যান্ড সমূহ</h3>
             <div className="grid grid-cols-3 gap-2.5">
               {BRANDS.map(br => (
                 <div 
                   key={br.id}
                   onClick={() => handleSelectBrand(br.id)}
-                  className="bg-[var(--pm-surface)] hover:bg-[var(--pm-surface-hover)] border border-white/[0.06] rounded-2xl p-3.5 text-center cursor-pointer transition-all hover:y-[-2px] hover:shadow-lg flex flex-col items-center gap-1.5"
+                  className="bg-[var(--pm-surface)] hover:bg-[var(--pm-surface-hover)] border border-[var(--pm-border)] rounded-2xl p-3.5 text-center cursor-pointer transition-all hover:y-[-2px] hover:shadow-lg flex flex-col items-center gap-1.5"
                 >
-                  <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${br.color} flex items-center justify-center text-xs font-black text-white shadow-md shadow-black/20`}>
+                  <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${br.color} flex items-center justify-center text-xs font-black text-[var(--pm-text)] shadow-md shadow-black/20`}>
                     {br.short}
                   </div>
                   <div>
-                    <h4 className="text-[10px] font-extrabold text-white">{br.name}</h4>
+                    <h4 className="text-[10px] font-extrabold text-[var(--pm-text)]">{br.name}</h4>
                     <p className="text-[8px] text-[var(--pm-text-secondary)] font-semibold mt-0.5 truncate max-w-full">{br.tagline}</p>
                   </div>
                 </div>
@@ -605,8 +605,8 @@ export const B2CHome = () => {
           {/* TRENDING PRODUCTS (Horizontal scroll popularity) */}
           <section className="space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-[11px] font-black uppercase text-zinc-400 tracking-wider flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" /> ট্রেন্ডিং প্রোডাক্টস
+              <h3 className="text-[11px] font-black uppercase text-[var(--pm-text)] tracking-wider flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5 text-[var(--pm-accent)]" /> ট্রেন্ডিং প্রোডাক্টস
               </h3>
             </div>
             <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-none -mx-4 px-4">
@@ -614,13 +614,13 @@ export const B2CHome = () => {
                 <div 
                   key={prod.id}
                   onClick={() => handleSelectProduct(prod)}
-                  className="w-36 bg-[var(--pm-surface)] border border-white/[0.05] rounded-2xl p-2.5 shrink-0 space-y-2.5 text-left cursor-pointer hover:y-[-2px] transition-transform"
+                  className="w-36 bg-[var(--pm-surface)] border border-[var(--pm-border)] rounded-2xl p-2.5 shrink-0 space-y-2.5 text-left cursor-pointer hover:y-[-2px] transition-transform"
                 >
                   <div className="aspect-square rounded-xl bg-white overflow-hidden">
                     <img src={prod.image} alt={prod.title} className="w-full h-full object-cover" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="text-[10px] font-bold text-white line-clamp-1">{prod.title}</h4>
+                    <h4 className="text-[10px] font-bold text-[var(--pm-text)] line-clamp-1">{prod.title}</h4>
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-black text-[var(--pm-accent)]">৳{prod.price}</span>
                       <span className="text-[8px] text-[var(--pm-text-secondary)] font-extrabold">{prod.reviewCount || 100}+ পিস</span>
@@ -633,13 +633,13 @@ export const B2CHome = () => {
 
           {/* RETAIL STORE SPOTLIGHT SECTION WITH RATING STATISTICS MATRIX (update-v01) */}
           <section className="space-y-3">
-            <h3 className="text-[11px] font-black uppercase text-zinc-400 tracking-wider">রিসেন্ট মার্চেন্ট স্পটলাইট</h3>
+            <h3 className="text-[11px] font-black uppercase text-[var(--pm-text)] tracking-wider">রিসেন্ট মার্চেন্ট স্পটলাইট</h3>
             <div className="space-y-2.5">
               {FEATURED_STORES.map((sh, index) => {
                 const isBreakdownOpen = ratingStore === sh.name;
                 const IconComponent = sh.icon;
                 return (
-                  <div key={index} className="flex flex-col gap-0 rounded-2xl bg-[var(--pm-surface)] border border-white/[0.05] overflow-hidden">
+                  <div key={index} className="flex flex-col gap-0 rounded-2xl bg-[var(--pm-surface)] border border-[var(--pm-border)] overflow-hidden">
                     <div 
                       onClick={() => handleSelectStore(sh.name)}
                       className="p-3.5 hover:bg-[var(--pm-surface-hover)] transition-all flex items-center gap-3.5 cursor-pointer text-left"
@@ -649,13 +649,13 @@ export const B2CHome = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1">
-                          <h4 className="text-xs font-black text-white truncate">{sh.name}</h4>
-                          <ShieldCheck className="w-3.5 h-3.5 text-cyan-400 fill-cyan-400/10 shrink-0" />
+                          <h4 className="text-xs font-black text-[var(--pm-text)] truncate">{sh.name}</h4>
+                          <ShieldCheck className="w-3.5 h-3.5 text-[var(--pm-accent-2)] shrink-0" />
                         </div>
                         {/* Rating click triggers animated dropdown */}
                         <div 
                           onClick={(e) => toggleRatingStore(e, sh.name)}
-                          className="flex items-center gap-1.5 mt-0.5 text-[9px] text-[var(--pm-text-secondary)] font-bold hover:text-amber-400 transition-colors"
+                          className="flex items-center gap-1.5 mt-0.5 text-[9px] text-[var(--pm-text-secondary)] font-bold hover:text-[var(--pm-accent)] transition-colors"
                           title="রিভিউ পরিসংখ্যান দেখুন"
                         >
                           <span className="flex items-center gap-0.5 text-amber-400">
@@ -677,9 +677,9 @@ export const B2CHome = () => {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
-                          className="px-4 pb-3.5 pt-1.5 border-t border-white/[0.03] bg-zinc-950/20 text-left space-y-1.5 text-[9px] select-none"
+                          className="px-4 pb-3.5 pt-1.5 border-t border-[var(--pm-border)] bg-[var(--pm-bg)]/40 text-left space-y-1.5 text-[9px] select-none"
                         >
-                          <p className="text-[8px] font-bold text-zinc-400 uppercase tracking-wider">রেটিং বিতরণ বিশ্লেষণ (Rating Metrics)</p>
+                          <p className="text-[8px] font-bold text-[var(--pm-text-secondary)] uppercase tracking-wider">রেটিং বিতরণ বিশ্লেষণ (Rating Metrics)</p>
                           {[
                             { stars: 5, pct: 88, count: '১০.৯কে' },
                             { stars: 4, pct: 9, count: '১.১কে' },
@@ -688,7 +688,7 @@ export const B2CHome = () => {
                             { stars: 1, pct: 0, count: '০' }
                           ].map(metric => (
                             <div key={metric.stars} className="flex items-center gap-2">
-                              <span className="w-8 text-[8px] font-bold text-zinc-400 flex items-center gap-0.5">
+                              <span className="w-8 text-[8px] font-bold text-[var(--pm-text-secondary)] flex items-center gap-0.5">
                                 {metric.stars}★
                               </span>
                               <div className="flex-1 h-1.5 bg-[var(--pm-card-hover)] rounded-full overflow-hidden">
@@ -696,11 +696,11 @@ export const B2CHome = () => {
                                   initial={{ width: 0 }}
                                   animate={{ width: `${metric.pct}%` }}
                                   transition={{ duration: 0.6 }}
-                                  className="h-full bg-gradient-to-r from-amber-400 to-orange-500 rounded-full"
+                                  className="h-full bg-[var(--pm-accent)] rounded-full"
                                 />
                               </div>
-                              <span className="w-8 text-right font-mono font-medium text-zinc-300">{metric.pct}%</span>
-                              <span className="w-8 text-right text-zinc-500 font-bold">({metric.count})</span>
+                              <span className="w-8 text-right font-mono font-medium text-[var(--pm-text-secondary)]">{metric.pct}%</span>
+                              <span className="w-8 text-right text-[var(--pm-muted)] font-bold">({metric.count})</span>
                             </div>
                           ))}
                         </motion.div>
@@ -714,7 +714,7 @@ export const B2CHome = () => {
 
           {/* RECOMMENDED FOR YOU (Vertical Grid list displaying live sorted items) */}
           <section className="space-y-3">
-            <h3 className="text-[11px] font-black uppercase text-zinc-400 tracking-wider">আপনার জন্য সাজেকশনস</h3>
+            <h3 className="text-[11px] font-black uppercase text-[var(--pm-text)] tracking-wider">আপনার জন্য সাজেকশনস</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
               {getSortedProducts(mockProducts.filter((p: any) => p.portal === 'b2c' || p.portal === 'pk-shop')).slice(0, 8).map((prod: any) => (
                 <UnifiedPostCard 
@@ -781,7 +781,7 @@ export const B2CHome = () => {
           {sortedFilteredProducts.length === 0 ? (
             <div className="py-20 text-center rounded-3xl bg-[var(--pm-surface)]/40 border border-white/5 flex flex-col items-center">
               <Layers className="w-12 h-12 text-zinc-600 mb-3 animate-bounce" />
-              <p className="text-xs font-black text-white">দুঃখিত, কোনো মিল খুঁজে পাওয়া যায়নি</p>
+              <p className="text-xs font-black text-[var(--pm-text)]">দুঃখিত, কোনো মিল খুঁজে পাওয়া যায়নি</p>
               <p className="text-[10px] text-[var(--pm-text-secondary)] font-bold mt-1 max-w-[200px]">অনুগ্রহ করে অন্য শব্দ নিয়ে পুনরায় খুঁজুন অথবা ক্যাটাগরি পরিবর্তন করুন।</p>
             </div>
           ) : (
@@ -919,7 +919,7 @@ export const B2CHome = () => {
                 </div>
               </div>
               <div className="space-y-1 select-none">
-                <h4 className="text-xs font-black text-white">বলুন, আমরা শুনছি...</h4>
+                <h4 className="text-xs font-black text-[var(--pm-text)]">বলুন, আমরা শুনছি...</h4>
                 <p className="text-[9px] text-[var(--pm-text-secondary)] font-bold">যেমন: "জেনুইন লেদার ওয়ালেট"</p>
               </div>
             </motion.div>
