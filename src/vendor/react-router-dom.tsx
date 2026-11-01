@@ -99,7 +99,7 @@ function readLocation(): LocationObject {
     pathname: window.location.pathname || "/",
     search: window.location.search,
     hash: window.location.hash,
-    state: state.usr ?? null,
+    state: (state.usr ?? null) as Record<string, unknown> | null,
     key: state.key || "default",
   };
 }
@@ -184,7 +184,7 @@ export function BrowserRouter({ children }: { children?: ReactNode }) {
       pathname: resolved.pathname,
       search: resolved.search,
       hash: resolved.hash,
-      state: state.usr,
+      state: (state.usr ?? null) as Record<string, unknown> | null,
       key,
     });
   }, []);

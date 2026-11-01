@@ -6,6 +6,7 @@ import {
   Sparkles, Calendar, Clock, MapPin, Truck, HelpCircle, FileText, Check
 } from 'lucide-react';
 import { useNavigate, useLocation, Link, useSearchParams } from 'react-router-dom';
+import type { CartItem } from '@/modules/cart';
 import { useCartStore } from '@/modules/cart';
 import { useWalletStore } from '@/modules/wallet';
 import { cn } from '@/lib/utils';
