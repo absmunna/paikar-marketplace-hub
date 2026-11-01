@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bell, Search, ShoppingBag, User, LogIn } from 'lucide-react';
+import { Bell, Menu, Search, ShoppingBag, User, LogIn } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SearchBar } from './SearchBar';
 import { useCartStore, useCartDrawerStore } from '@/modules/cart';
