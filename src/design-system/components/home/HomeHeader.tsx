@@ -67,7 +67,7 @@ export const HomeHeader: React.FC = () => {
   };
 
   return (
-    <div className="sticky top-0 z-40 bg-[var(--pm-bg)]/85 backdrop-blur-xl border-b border-white/[0.04] px-3.5 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4 select-none">
+    <div className="sticky top-0 z-40 bg-[var(--pm-bg)]/85 backdrop-blur-xl border-b border-[var(--pm-border)] px-3.5 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-4 select-none">
       {/* Left: User & Location (Unboxed approach) */}
       <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
         <motion.button 
@@ -77,7 +77,7 @@ export const HomeHeader: React.FC = () => {
           className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-orange-500/20 to-rose-600/20 p-0.5 cursor-pointer outline-none"
           title={isAuthenticated ? (user?.fullName || 'প্রোফাইল') : 'লগইন করুন'}
         >
-          <div className="w-full h-full rounded-2xl bg-[var(--pm-surface)] flex items-center justify-center overflow-hidden border border-white/10">
+          <div className="w-full h-full rounded-2xl bg-[var(--pm-surface)] flex items-center justify-center overflow-hidden border border-[var(--pm-border)]">
             {user?.avatar || user?.avatarUrl ? (
               <img 
                 src={user.avatar || user.avatarUrl} 
@@ -86,7 +86,7 @@ export const HomeHeader: React.FC = () => {
                 referrerPolicy="no-referrer"
               />
             ) : (
-              <User className="w-4 h-4 sm:w-5 sm:h-5 text-white/70" />
+              <User className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--pm-muted)]" />
             )}
           </div>
         </motion.button>
@@ -99,12 +99,12 @@ export const HomeHeader: React.FC = () => {
             className="flex flex-col text-left group cursor-pointer outline-none"
           >
             <div className="flex items-center gap-1 opacity-60">
-              <span className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.15em]">ডেলিভারি লোকেশন</span>
-              <ChevronDown className={`w-2.5 h-2.5 text-zinc-500 transition-transform duration-200 ${isLocationOpen ? 'rotate-180' : ''}`} />
+              <span className="text-[9px] font-black text-[var(--pm-text-secondary)] uppercase tracking-[0.15em]">ডেলিভারি লোকেশন</span>
+              <ChevronDown className={`w-2.5 h-2.5 text-[var(--pm-muted)] transition-transform duration-200 ${isLocationOpen ? 'rotate-180' : ''}`} />
             </div>
             <div className="flex items-center gap-1.5 mt-0.5">
               <MapPin className="w-3.5 h-3.5 text-orange-500 shrink-0" />
-              <span className="text-xs sm:text-[13px] font-black text-white tracking-tight group-hover:text-orange-400 transition-colors truncate max-w-[130px] sm:max-w-[180px]">
+              <span className="text-xs sm:text-[13px] font-black text-[var(--pm-text)] tracking-tight group-hover:text-[var(--pm-accent)] transition-colors truncate max-w-[130px] sm:max-w-[180px]">
                 {selectedLocation}
               </span>
             </div>
@@ -120,11 +120,11 @@ export const HomeHeader: React.FC = () => {
                 transition={{ duration: 0.15 }}
                 className="absolute top-full left-0 mt-2 w-56 sm:w-64 rounded-2xl bg-[var(--pm-surface)] border border-[var(--pm-border)] shadow-2xl p-2 z-50 overflow-hidden"
               >
-                <div className="px-2.5 py-1.5 border-b border-white/[0.06] mb-1 flex items-center justify-between">
-                  <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">ডেলিভারি এলাকা নির্বাচন</span>
+                <div className="px-2.5 py-1.5 border-b border-[var(--pm-border)] mb-1 flex items-center justify-between">
+                  <span className="text-[10px] font-bold text-[var(--pm-text-secondary)] uppercase tracking-wider">ডেলিভারি এলাকা নির্বাচন</span>
                   <button 
                     onClick={() => setIsLocationOpen(false)}
-                    className="p-1 text-zinc-500 hover:text-white rounded"
+                    className="p-1 text-[var(--pm-muted)] hover:text-white rounded"
                   >
                     <X className="w-3 h-3" />
                   </button>
@@ -140,12 +140,12 @@ export const HomeHeader: React.FC = () => {
                         className={`w-full text-left px-2.5 py-2 rounded-xl text-xs font-semibold flex items-center justify-between transition-colors ${
                           isSelected
                             ? 'bg-orange-500/15 text-orange-400'
-                            : 'text-zinc-300 hover:bg-white/5 hover:text-white'
+                            : 'text-[var(--pm-text-secondary)] hover:bg-[var(--pm-card-hover)] hover:text-[var(--pm-text)]'
                         }`}
                       >
                         <div>
                           <p className="font-bold">{loc.name}</p>
-                          <p className="text-[10px] text-zinc-500">{loc.district}</p>
+                          <p className="text-[10px] text-[var(--pm-muted)]">{loc.district}</p>
                         </div>
                         {isSelected && <Check className="w-3.5 h-3.5 text-orange-400" />}
                       </button>
@@ -161,9 +161,9 @@ export const HomeHeader: React.FC = () => {
       {/* Center: Search Trigger (Desktop unboxed search bar) */}
       <form 
         onSubmit={handleSearchSubmit}
-        className="flex-1 max-w-sm hidden lg:flex items-center bg-white/[0.03] border border-white/[0.06] rounded-2xl px-3.5 h-10 focus-within:border-orange-500/50 focus-within:bg-white/[0.05] transition-all"
+        className="flex-1 max-w-sm hidden lg:flex items-center bg-[var(--pm-surface)] border border-[var(--pm-border)] rounded-2xl px-3.5 h-10 focus-within:border-[var(--pm-accent)]/50 focus-within:bg-[var(--pm-card-hover)] transition-all"
       >
-        <button type="submit" className="text-zinc-500 hover:text-orange-400 mr-2 transition-colors cursor-pointer">
+        <button type="submit" className="text-[var(--pm-muted)] hover:text-[var(--pm-accent)] mr-2 transition-colors cursor-pointer">
           <Search className="w-3.5 h-3.5" />
         </button>
         <input 
@@ -172,13 +172,13 @@ export const HomeHeader: React.FC = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="পণ্য, পাইকারি প্রস্তুতকারক বা শপ খুঁজুন..." 
-          className="bg-transparent border-none outline-none text-xs font-semibold text-white w-full placeholder:text-zinc-500"
+          className="bg-transparent border-none outline-none text-xs font-semibold text-white w-full placeholder:text-[var(--pm-muted)]"
         />
         {searchQuery && (
           <button 
             type="button" 
             onClick={() => setSearchQuery('')}
-            className="p-1 text-zinc-500 hover:text-white rounded"
+            className="p-1 text-[var(--pm-muted)] hover:text-white rounded"
           >
             <X className="w-3 h-3" />
           </button>
@@ -208,10 +208,10 @@ export const HomeHeader: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/messages')}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 hover:bg-cyan-500/20 flex items-center justify-center text-cyan-400 transition-all cursor-pointer shadow-sm relative group"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[var(--pm-accent-2-soft)] border border-[var(--pm-accent-2)]/25 hover:bg-[var(--pm-accent-2)]/20 flex items-center justify-center text-[var(--pm-accent-2)] transition-all cursor-pointer shadow-sm relative group"
             title="মেসেজ সেন্টার"
           >
-            <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-500 group-hover:scale-110 transition-transform" />
+            <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--pm-accent-2)] group-hover:scale-110 transition-transform" />
             
             {/* Red dot for new messages (Placeholder simulation) */}
             <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-[var(--pm-bg)] animate-pulse" />
@@ -227,8 +227,8 @@ export const HomeHeader: React.FC = () => {
         >
           <div className="flex items-center gap-2">
             <div className="flex flex-col items-end">
-              <span className="text-[8px] font-black text-zinc-400 uppercase tracking-widest opacity-80">ওয়ালেট ব্যালেন্স</span>
-              <span className="text-xs sm:text-[13px] font-black text-white tabular-nums group-hover:text-orange-400 transition-colors">
+              <span className="text-[8px] font-black text-[var(--pm-text-secondary)] uppercase tracking-widest opacity-80">ওয়ালেট ব্যালেন্স</span>
+              <span className="text-xs sm:text-[13px] font-black text-[var(--pm-text)] tabular-nums group-hover:text-[var(--pm-accent)] transition-colors">
                 ৳{balance ? balance.toLocaleString('bn-BD') : '০'}
               </span>
             </div>
