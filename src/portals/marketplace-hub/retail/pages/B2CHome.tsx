@@ -365,8 +365,8 @@ export const B2CHome = () => {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
               </span>
               <div className="text-left">
-                <p className="text-[10px] font-black text-white flex items-center gap-1.5 uppercase tracking-wide">
-                  <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" /> ক্যাম্পেইন অফার
+                <p className="text-[10px] font-black text-[var(--pm-text)] flex items-center gap-1.5 uppercase tracking-wide">
+                  <Zap className="w-3.5 h-3.5 text-[var(--pm-accent)] fill-[var(--pm-accent)]" /> ক্যাম্পেইন অফার
                 </p>
                 <p className="text-[9px] text-[var(--pm-text-secondary)] font-semibold leading-relaxed mt-0.5">
                   বিকাশ ও নগদ পেমেন্টে <span className="text-[var(--pm-accent)] font-extrabold">১০% ক্যাশব্যাক</span> অফার চলমান! অর্ডার ভ্যালু ছাড়িয়ে এখনই লুফে নিন।
@@ -393,12 +393,12 @@ export const B2CHome = () => {
             placeholder="ফ্যাশন, ইলেকট্রনিক্স বা শপ খুঁজুন..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="flex-1 bg-transparent border-none text-[11px] text-white focus:outline-none placeholder-zinc-500 font-semibold"
+            className="flex-1 bg-transparent border-none text-[11px] text-[var(--pm-text)] focus:outline-none placeholder-[var(--pm-muted)] font-semibold"
           />
           {searchQuery && (
             <button 
               onClick={() => setSearchQuery('')}
-              className="p-1 rounded-full text-zinc-500 hover:text-white"
+              className="p-1 rounded-full text-[var(--pm-muted)] hover:text-[var(--pm-text)]"
             >
               <X className="w-4 h-4" />
             </button>
@@ -423,7 +423,7 @@ export const B2CHome = () => {
               setSearchQuery(tag);
               toast.success(`"${tag}" সার্চ ফিল্টারে যুক্ত হয়েছে`);
             }}
-            className="px-2.5 py-1 rounded-full bg-[var(--pm-surface)] hover:bg-[var(--pm-surface-hover)] border border-[var(--pm-border)] text-[9px] font-bold text-zinc-300 hover:text-[var(--pm-accent)] transition-all shrink-0 active:scale-95 whitespace-nowrap"
+            className="px-2.5 py-1 rounded-full bg-[var(--pm-surface)] hover:bg-[var(--pm-surface-hover)] border border-[var(--pm-border)] text-[9px] font-bold text-[var(--pm-text-secondary)] hover:text-[var(--pm-accent)] transition-all shrink-0 active:scale-95 whitespace-nowrap"
           >
             #{tag}
           </button>
@@ -432,7 +432,7 @@ export const B2CHome = () => {
 
       {/* ━━━ SORT AND FILTER TOOLBAR (new add) ━━━ */}
       <div className="mt-4 bg-[var(--pm-surface)]/60 border border-[var(--pm-border)] p-2.5 rounded-2xl flex items-center justify-between gap-2 overflow-hidden">
-        <div className="flex items-center gap-1.5 text-[10px] text-zinc-400 font-extrabold shrink-0">
+        <div className="flex items-center gap-1.5 text-[10px] text-[var(--pm-text-secondary)] font-extrabold shrink-0">
           <Layers className="w-3.5 h-3.5 text-[var(--pm-accent)]" />
           <span>সাজানো:</span>
         </div>
@@ -756,7 +756,7 @@ export const B2CHome = () => {
           <div className="flex items-center justify-between text-xs select-none gap-2">
             <span className="text-[var(--pm-text-secondary)] font-black uppercase tracking-wider">ডিল অনুসন্ধান ফলাফল ({sortedFilteredProducts.length})</span>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold text-zinc-300 bg-[var(--pm-card-hover)] px-2.5 py-1 rounded-lg border border-white/10">
+              <span className="text-[10px] font-bold text-[var(--pm-text-secondary)] bg-[var(--pm-card-hover)] px-2.5 py-1 rounded-lg border border-white/10">
                 {effectiveCategory !== 'all' ? effectiveCategory.toUpperCase() : 'সব পণ্য'}{effectiveSub ? ` > ${effectiveSub}` : ''}
               </span>
               <button
