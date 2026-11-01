@@ -509,10 +509,10 @@ export const B2CHome = () => {
                     setMainCategory(slide.category);
                     toast.success(`"${slide.title}" সেকশনে আপনাকে স্বাগতম!`);
                   }}
-                  className="px-4 py-2 rounded-full bg-white text-black font-black text-[10px] sm:text-xs hover:bg-zinc-200 transition-all select-none duration-150 active:scale-95 shadow-md shadow-white/5 cursor-pointer flex items-center gap-1 hover:gap-1.5"
+                  className="px-4 py-2 rounded-full bg-[var(--pm-accent)] text-white font-black text-[10px] sm:text-xs hover:brightness-110 transition-all select-none duration-150 active:scale-95 shadow-md shadow-[var(--pm-accent)]/20 cursor-pointer flex items-center gap-1 hover:gap-1.5"
                 >
                   <span>{SPOTLIGHT_SLIDES[activeHeroSlide].btnText}</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-black stroke-[3px]" />
+                  <ChevronRight className="w-3.5 h-3.5 text-white stroke-[3px]" />
                 </button>
               </div>
             </div>
