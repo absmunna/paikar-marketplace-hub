@@ -205,7 +205,7 @@ export default function ProductDetailsView() {
     description: matched?.description || "Experience breathable comfort with 100% combed ringspun cotton fabric (180 GSM). Specially crafted for Bangladesh's subtropical climate with reactive dye, anti-pilling wash, and double-stitched reinforced collar. Master catalog item supporting multiple verified vendor listings.",
     price: activeOffer ? activeOffer.price : (matched?.price || 450),
     originalPrice: activeOffer?.originalPrice || (matched as any)?.originalPrice || Math.round((matched?.price || 450) * 1.35),
-    wholesalePrice: (matched as any)?.moq ? Math.round((matched.price) * 0.75) : 220,
+    wholesalePrice: (matched as any)?.moq ? Math.round((matched?.price || 450) * 0.75) : 220,
     moq: activeOffer?.minOrderQty || (matched as any)?.moq || 1,
     rating: activeOffer?.sellerRating || matched?.rating || 4.8,
     reviews: matched?.reviewCount || 124,

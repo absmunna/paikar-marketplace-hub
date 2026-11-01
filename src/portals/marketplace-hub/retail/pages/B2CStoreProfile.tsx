@@ -192,9 +192,9 @@ export const B2CStoreProfile: React.FC<B2CStoreProfileProps> = ({
                         comments: 10,
                         product: {
                           id: prod.id,
-                          title: prod.title,
+                          title: prod.title || 'PaikarMart Item',
                           price: prod.price,
-                          imageUrl: prod.image
+                          imageUrl: prod.image || ''
                         }
                       }}
                     />

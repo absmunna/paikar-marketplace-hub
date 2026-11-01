@@ -137,13 +137,13 @@ export const PersonalAddressesTab: React.FC = () => {
       tag: selectedTag,
       tagNameEn: tagOptions.find(t => t.key === selectedTag)?.labelEn || 'Custom',
       tagNameBn: tagOptions.find(t => t.key === selectedTag)?.labelBn || 'অন্যান্য',
-      name: tempAddress.fullName,
-      phone: tempAddress.phone,
+      name: tempAddress.fullName || '',
+      phone: tempAddress.phone || '',
       division: tempAddress.division,
       district: tempAddress.district,
       upazila: tempAddress.upazila,
       area: tempAddress.area,
-      zipCode: tempAddress.zipCode,
+      zipCode: tempAddress.zipCode || '',
       roadHouseLandmark: tempAddress.area, // Base location fallback
       deliveryNote: '',
       isDefault: addresses.length === 0

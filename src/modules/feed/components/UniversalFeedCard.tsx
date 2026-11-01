@@ -14,7 +14,7 @@ export const UniversalFeedCard = React.memo(({ item }: UniversalFeedCardProps) =
     domain: item.domain,
     authorName: item.author.name,
     authorAvatar: item.author.avatar,
-    isVerified: item.author.isVerified,
+    isVerified: Boolean(item.author.isVerified),
     authorRole: item.author.role || '',
     timestamp: item.content.timestamp ? new Date(item.content.timestamp).toLocaleDateString() : 'Just now',
     content: item.content.description || item.content.title || '',

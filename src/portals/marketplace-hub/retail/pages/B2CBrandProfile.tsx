@@ -156,9 +156,9 @@ export const B2CBrandProfile: React.FC<B2CBrandProfileProps> = ({
                     comments: 5,
                     product: {
                       id: itm.id,
-                      title: itm.title,
+                      title: itm.title || 'PaikarMart Item',
                       price: itm.price,
-                      imageUrl: itm.image
+                      imageUrl: itm.image || ''
                     },
                     metadata: {
                       isOfficialBrand: true
