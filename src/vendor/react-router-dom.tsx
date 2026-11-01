@@ -336,10 +336,14 @@ function toHref(to: To): string {
 }
 
 export interface LinkProps
-  extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> {
+  extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "className" | "style"> {
   to: To;
   replace?: boolean;
   state?: unknown;
+  className?: string | ((args: { isActive?: boolean; isPending?: boolean }) => string | undefined);
+  style?:
+    | React.CSSProperties
+    | ((args: { isActive?: boolean; isPending?: boolean }) => React.CSSProperties | undefined);
 }
 
 export const Link = ({ to, replace, state, onClick, target, ...rest }: LinkProps) => {
