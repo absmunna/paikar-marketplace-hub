@@ -773,7 +773,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     isCustomer: (user?.roleGroup ?? getRoleGroup("buyer")) === "customer",
     isVendor: (user?.roleGroup ?? getRoleGroup("buyer")) === "vendor" || user?.role === "factory",
     isAdmin: user?.role === "admin" || user?.role === "super_admin",
-    isSeller: user?.role === "seller" || user?.roles?.includes("seller"),
+    isSeller: user?.role === "seller" || Boolean(user?.roles?.includes("seller")),
     
     loginWithPhone,
     login,

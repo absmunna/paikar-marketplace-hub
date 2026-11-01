@@ -26,7 +26,7 @@ export interface LocationObject {
   pathname: string;
   search: string;
   hash: string;
-  state: unknown;
+  state: Record<string, unknown> | null;
   key: string;
 }
 
@@ -50,6 +50,7 @@ export type SearchParamsInit =
 
 export interface RouteProps {
   path?: string;
+  index?: boolean;
   element?: ReactNode;
   children?: ReactNode;
 }
@@ -223,8 +224,8 @@ export function useNavigate(): NavigateFunction {
   return ctx.navigate;
 }
 
-export function useParams(): Record<string, string | undefined> {
-  return useContext(MatchContext).params;
+export function useParams<T = Record<string, string | undefined>>(): T {
+  return useContext(MatchContext).params as T;
 }
 
 export function useSearchParams(): [
@@ -436,7 +437,7 @@ function collectRoutes(children: ReactNode): RouteDef[] {
     if (!isValidElement(child)) return;
     const props = child.props as RouteProps & { children?: ReactNode };
     if (child.type === Route) {
-      const def: RouteDef = { path: props.path ?? "", element: props.element };
+      const def: RouteDef = { path: props.index ? "" : props.path ?? "", element: props.element };
       const kids = collectRoutes(props.children);
       if (kids.length > 0) def.children = kids;
       defs.push(def);

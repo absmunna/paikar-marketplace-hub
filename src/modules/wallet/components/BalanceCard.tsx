@@ -59,7 +59,7 @@ export const BalanceCard = () => {
           </div>
           <div>
             <p className="text-[10px] text-indigo-200/50 uppercase font-black tracking-wider leading-none mb-1">Available Balance</p>
-            <h3 className="text-2xl font-black text-white leading-none">৳ {bdtBalance.toLocaleString()}</h3>
+            <h3 className="text-2xl font-black text-white leading-none">৳ {(bdtBalance ?? 0).toLocaleString()}</h3>
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export const BalanceCard = () => {
           </div>
           <div>
             <p className="text-[10px] text-amber-200/50 uppercase font-black tracking-wider leading-none mb-1">Active Coins</p>
-            <h3 className="text-2xl font-black text-amber-400 leading-none">{coinBalance.toLocaleString()} <span className="text-xs text-amber-500">Coins</span></h3>
+            <h3 className="text-2xl font-black text-amber-400 leading-none">{(coinBalance ?? 0).toLocaleString()} <span className="text-xs text-amber-500">Coins</span></h3>
           </div>
         </div>
       </div>

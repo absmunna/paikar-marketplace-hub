@@ -127,7 +127,7 @@ export const productService = {
    */
   async getProductsByCategory(categoryName: string, maxResults: number = 20): Promise<SellerProduct[]> {
     if (!db) {
-      return MOCK_PRODUCTS.filter(p => p.categoryName.toLowerCase() === categoryName.toLowerCase()).slice(0, maxResults);
+      return MOCK_PRODUCTS.filter(p => p.categoryName?.toLowerCase() === categoryName.toLowerCase()).slice(0, maxResults);
     }
     const path = "products";
     try {
@@ -297,7 +297,7 @@ export const productService = {
       const term = searchTerm.toLowerCase();
       const filtered = MOCK_PRODUCTS.filter(p => 
         p.title.toLowerCase().includes(term) || 
-        p.categoryName.toLowerCase().includes(term)
+        p.categoryName?.toLowerCase().includes(term)
       );
       callback(filtered);
       return () => {};
