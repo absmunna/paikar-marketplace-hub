@@ -71,32 +71,14 @@ export const portalRoutes = (
     <Route path="/auto/*" element={<AutoPortal />} />
 
     {/* B2B / Wholesale Portals */}
-    <Route 
-      path="/wholesale/*" 
-      element={
-        <B2BLayout>
-          <Routes>
-            <Route path="/" element={<B2BHome />} />
-            <Route path="/dashboard" element={<B2BDashboard />} />
-            <Route path="/products" element={<B2BProducts />} />
-            <Route path="/orders" element={<B2BOrders />} />
-          </Routes>
-        </B2BLayout>
-      } 
-    />
-    <Route 
-      path="/b2b/*" 
-      element={
-        <B2BLayout>
-          <Routes>
-            <Route path="/" element={<B2BHome />} />
-            <Route path="/dashboard" element={<B2BDashboard />} />
-            <Route path="/products" element={<B2BProducts />} />
-            <Route path="/orders" element={<B2BOrders />} />
-          </Routes>
-        </B2BLayout>
-      } 
-    />
+    <Route path="/wholesale" element={<B2BLayout><B2BHome /></B2BLayout>} />
+    <Route path="/wholesale/dashboard" element={<B2BLayout><B2BDashboard /></B2BLayout>} />
+    <Route path="/wholesale/products" element={<B2BLayout><B2BProducts /></B2BLayout>} />
+    <Route path="/wholesale/orders" element={<B2BLayout><B2BOrders /></B2BLayout>} />
+    <Route path="/b2b" element={<B2BLayout><B2BHome /></B2BLayout>} />
+    <Route path="/b2b/dashboard" element={<B2BLayout><B2BDashboard /></B2BLayout>} />
+    <Route path="/b2b/products" element={<B2BLayout><B2BProducts /></B2BLayout>} />
+    <Route path="/b2b/orders" element={<B2BLayout><B2BOrders /></B2BLayout>} />
 
     {/* Become Seller */}
     <Route path="/become-seller" element={<BecomeSellerPage />} />
