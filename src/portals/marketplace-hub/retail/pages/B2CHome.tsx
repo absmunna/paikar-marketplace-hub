@@ -881,7 +881,7 @@ export const B2CHome = () => {
               <div className="flex gap-2 text-[10px] font-black select-none">
                 <button 
                   onClick={() => setShowGuestWarn(false)}
-                  className="flex-1 py-3.5 rounded-xl bg-[var(--pm-card-hover)] border border-[var(--pm-border)] text-white"
+                  className="flex-1 py-3.5 rounded-xl bg-[var(--pm-card-hover)] border border-[var(--pm-border)] text-[var(--pm-text)]"
                 >
                   পরে করব
                 </button>
