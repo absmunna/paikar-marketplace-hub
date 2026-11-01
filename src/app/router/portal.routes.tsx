@@ -47,39 +47,17 @@ export const portalRoutes = (
 
     {/* Core Retail / B2C Portals */}
     <Route path="/shop" element={<B2CHome />} />
-    <Route 
-      path="/b2c/*" 
-      element={
-        <B2CLayout>
-          <Routes>
-            <Route path="/" element={<B2CHome />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
-          </Routes>
-        </B2CLayout>
-      } 
-    />
+    {/* NOTE: This router shim's nested <Routes> always match from the site root,
+        so splat parents with nested tables render nothing (e.g. /b2b was blank).
+        Declare every subpath as a flat absolute route instead. */}
+    <Route path="/b2c" element={<B2CLayout><B2CHome /></B2CLayout>} />
+    <Route path="/b2c/product/:id" element={<ProductDetails />} />
     {/* Marketplace Hub Main Entry & Subroutes */}
     <Route path="/marketplace" element={<MarketplaceHubPortal />} />
     <Route path="/marketplace/hub" element={<MarketplaceHubPortal />} />
-    <Route 
-      path="/marketplace/*" 
-      element={
-        <Routes>
-          <Route path="/" element={<MarketplaceHubPortal />} />
-          <Route path="/all" element={<B2CLayout><B2CHome /></B2CLayout>} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-        </Routes>
-      } 
-    />
-    <Route 
-      path="/pk-shop/*" 
-      element={
-        <Routes>
-          <Route path="/" element={<PKShopHome />} />
-          <Route path="/admin" element={<PKShopAdminView />} />
-        </Routes>
-      } 
-    />
+    <Route path="/marketplace/all" element={<B2CLayout><B2CHome /></B2CLayout>} />
+    <Route path="/marketplace/product/:id" element={<ProductDetails />} />
+    <Route path="/pk-shop" element={<PKShopHome />} />
     <Route path="/pk-shop/admin" element={<PKShopAdminView />} />
     <Route path="/portals/pk-shop/admin" element={<PKShopAdminView />} />
     <Route path="/portals/pk-shop" element={<PKShopHome />} />
