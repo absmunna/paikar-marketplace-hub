@@ -386,7 +386,7 @@ export const B2CHome = () => {
 
       {/* ━━━ TOP COMPACT SEARCH BAR WITH INSTANT VOICE ENGAGE ━━━ */}
       <div className="mt-4 flex gap-2">
-        <div className="flex-1 h-11 bg-[var(--pm-surface)] rounded-xl border border-white/[0.08] px-3.5 flex items-center gap-2 focus-within:border-[var(--pm-accent)] transition-all">
+        <div className="flex-1 h-11 bg-[var(--pm-surface)] rounded-xl border border-[var(--pm-border)] px-3.5 flex items-center gap-2 focus-within:border-[var(--pm-accent)] transition-all">
           <Search className="w-4.5 h-4.5 text-[var(--pm-text-secondary)]" />
           <input 
             type="text" 
@@ -406,7 +406,7 @@ export const B2CHome = () => {
         </div>
         <button 
           onClick={handleTriggerVoice}
-          className="w-11 h-11 rounded-xl bg-[var(--pm-surface)] border border-white/[0.08] flex items-center justify-center text-[var(--pm-accent)] transition-all active:scale-95 hover:bg-white/5 outline-none"
+          className="w-11 h-11 rounded-xl bg-[var(--pm-surface)] border border-[var(--pm-border)] flex items-center justify-center text-[var(--pm-accent)] transition-all active:scale-95 hover:bg-[var(--pm-card-hover)] outline-none"
           title="ভয়েস ডিক্টেশন"
         >
           <Mic className="w-4.5 h-4.5" />
@@ -423,7 +423,7 @@ export const B2CHome = () => {
               setSearchQuery(tag);
               toast.success(`"${tag}" সার্চ ফিল্টারে যুক্ত হয়েছে`);
             }}
-            className="px-2.5 py-1 rounded-full bg-[var(--pm-surface)] hover:bg-[var(--pm-surface-hover)] border border-white/[0.04] text-[9px] font-bold text-zinc-300 hover:text-[var(--pm-accent)] transition-all shrink-0 active:scale-95 whitespace-nowrap"
+            className="px-2.5 py-1 rounded-full bg-[var(--pm-surface)] hover:bg-[var(--pm-surface-hover)] border border-[var(--pm-border)] text-[9px] font-bold text-zinc-300 hover:text-[var(--pm-accent)] transition-all shrink-0 active:scale-95 whitespace-nowrap"
           >
             #{tag}
           </button>
@@ -431,7 +431,7 @@ export const B2CHome = () => {
       </div>
 
       {/* ━━━ SORT AND FILTER TOOLBAR (new add) ━━━ */}
-      <div className="mt-4 bg-[var(--pm-surface)]/60 border border-white/[0.04] p-2.5 rounded-2xl flex items-center justify-between gap-2 overflow-hidden">
+      <div className="mt-4 bg-[var(--pm-surface)]/60 border border-[var(--pm-border)] p-2.5 rounded-2xl flex items-center justify-between gap-2 overflow-hidden">
         <div className="flex items-center gap-1.5 text-[10px] text-zinc-400 font-extrabold shrink-0">
           <Layers className="w-3.5 h-3.5 text-[var(--pm-accent)]" />
           <span>সাজানো:</span>
@@ -468,7 +468,7 @@ export const B2CHome = () => {
         <div className="space-y-6 mt-4">
           
           {/* ━━━ B2C HERO SPOTLIGHT CAROUSEL SECTION (update-v01) ━━━ */}
-          <section className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-[var(--pm-surface)] h-[180px] sm:h-[220px] md:h-[260px] lg:h-[290px] flex flex-col justify-end p-4 sm:p-6 select-none">
+          <section className="relative overflow-hidden rounded-3xl border border-[var(--pm-border)] bg-[var(--pm-surface)] h-[180px] sm:h-[220px] md:h-[260px] lg:h-[290px] flex flex-col justify-end p-4 sm:p-6 select-none">
             {/* Background Image Carousel with absolute transition */}
             <div className="absolute inset-0 z-0">
               <AnimatePresence mode="wait">
@@ -558,7 +558,7 @@ export const B2CHome = () => {
                   <div 
                     key={prod.id} 
                     onClick={() => handleSelectProduct(prod)}
-                    className="w-32 bg-[var(--pm-surface)] border border-white/[0.04] p-2.5 rounded-2xl shrink-0 space-y-2 cursor-pointer relative hover:scale-102 transition-all"
+                    className="w-32 bg-[var(--pm-surface)] border border-[var(--pm-border)] p-2.5 rounded-2xl shrink-0 space-y-2 cursor-pointer relative hover:scale-102 transition-all"
                   >
                     <div className="aspect-square rounded-xl overflow-hidden bg-white relative">
                       <img src={prod.image} alt={prod.title} className="w-full h-full object-cover" />
@@ -571,7 +571,7 @@ export const B2CHome = () => {
                       <p className="text-xs font-semibold text-red-500">৳{prod.price}</p>
                     </div>
                     {/* Compact stock bar */}
-                    <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div className="w-full h-1 bg-[var(--pm-card-hover)] rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-red-600 to-amber-500" style={{ width: `${claimed}%` }} />
                     </div>
                   </div>
@@ -644,7 +644,7 @@ export const B2CHome = () => {
                       onClick={() => handleSelectStore(sh.name)}
                       className="p-3.5 hover:bg-[var(--pm-surface-hover)] transition-all flex items-center gap-3.5 cursor-pointer text-left"
                     >
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-white/[0.04] ${sh.color}`}>
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-[var(--pm-border)] ${sh.color}`}>
                         <IconComponent className="w-5 h-5" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -691,7 +691,7 @@ export const B2CHome = () => {
                               <span className="w-8 text-[8px] font-bold text-zinc-400 flex items-center gap-0.5">
                                 {metric.stars}★
                               </span>
-                              <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
+                              <div className="flex-1 h-1.5 bg-[var(--pm-card-hover)] rounded-full overflow-hidden">
                                 <motion.div 
                                   initial={{ width: 0 }}
                                   animate={{ width: `${metric.pct}%` }}
@@ -756,7 +756,7 @@ export const B2CHome = () => {
           <div className="flex items-center justify-between text-xs select-none gap-2">
             <span className="text-[var(--pm-text-secondary)] font-black uppercase tracking-wider">ডিল অনুসন্ধান ফলাফল ({sortedFilteredProducts.length})</span>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold text-zinc-300 bg-white/5 px-2.5 py-1 rounded-lg border border-white/10">
+              <span className="text-[10px] font-bold text-zinc-300 bg-[var(--pm-card-hover)] px-2.5 py-1 rounded-lg border border-white/10">
                 {effectiveCategory !== 'all' ? effectiveCategory.toUpperCase() : 'সব পণ্য'}{effectiveSub ? ` > ${effectiveSub}` : ''}
               </span>
               <button
@@ -869,7 +869,7 @@ export const B2CHome = () => {
               initial={{ scale: 0.95, y: 20, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.95, y: 20, opacity: 0 }}
-              className="relative bg-[var(--pm-surface)] border border-white/[0.08] p-6 rounded-[28px] max-w-sm w-full text-center space-y-4 shadow-2xl z-10"
+              className="relative bg-[var(--pm-surface)] border border-[var(--pm-border)] p-6 rounded-[28px] max-w-sm w-full text-center space-y-4 shadow-2xl z-10"
             >
               <div className="w-12 h-12 rounded-full bg-orange-500/10 text-orange-400 flex items-center justify-center mx-auto">
                 <Award className="w-6 h-6" />
@@ -881,7 +881,7 @@ export const B2CHome = () => {
               <div className="flex gap-2 text-[10px] font-black select-none">
                 <button 
                   onClick={() => setShowGuestWarn(false)}
-                  className="flex-1 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white"
+                  className="flex-1 py-3.5 rounded-xl bg-[var(--pm-card-hover)] border border-white/10 text-white"
                 >
                   পরে করব
                 </button>

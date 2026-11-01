@@ -14,4 +14,7 @@
   --pm-accent-2-soft: rgba(34, 211, 238, 0.1);
   --pm-success: #34d399;
   --pm-danger: #f87171;
+  --pm-text-secondary: var(--pm-muted);
+  --pm-text-muted: var(--pm-muted);
+  --pm-surface-hover: var(--pm-card-hover);
 }

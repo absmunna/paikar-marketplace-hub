@@ -323,7 +323,7 @@ export default function MarketplaceHubPortal() {
 
         {/* Categories / Search Bar Container */}
         <div className="bg-[var(--pm-surface)] border border-[var(--pm-border)] rounded-3xl p-4 shadow-lg flex flex-col md:flex-row items-center gap-4 justify-between">
-          <div className="flex items-center bg-[var(--pm-bg)] px-3 py-1 rounded-2xl w-full md:w-auto h-11 border border-white/[0.04] flex-1">
+          <div className="flex items-center bg-[var(--pm-bg)] px-3 py-1 rounded-2xl w-full md:w-auto h-11 border border-[var(--pm-border)] flex-1">
             <Search className="w-4.5 h-4.5 text-zinc-500 mr-2.5 shrink-0" />
             <input
               type="text"
@@ -376,7 +376,7 @@ export default function MarketplaceHubPortal() {
             {activePortal === 'all' && (
               <button 
                 onClick={shuffleAndSetProducts}
-                className="text-[10px] font-black text-zinc-400 hover:text-white flex items-center gap-1 border border-white/5 px-3 py-1.5 rounded-xl bg-white/5 transition-colors"
+                className="text-[10px] font-black text-zinc-400 hover:text-white flex items-center gap-1 border border-white/5 px-3 py-1.5 rounded-xl bg-[var(--pm-card-hover)] transition-colors"
               >
                 <RefreshCw className="w-3.5 h-3.5" /> মিক্সড রিশাফেল
               </button>
@@ -432,7 +432,7 @@ export default function MarketplaceHubPortal() {
         </section>
 
         {/* Seller Network Banner */}
-        <section className="bg-gradient-to-r from-blue-950/40 via-indigo-950/20 to-black/60 border border-white/[0.04] rounded-[32px] p-6 sm:p-8 shadow-xl">
+        <section className="bg-gradient-to-r from-blue-950/40 via-indigo-950/20 to-black/60 border border-[var(--pm-border)] rounded-[32px] p-6 sm:p-8 shadow-xl">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="space-y-2 text-left">
               <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400">
@@ -529,7 +529,7 @@ export default function MarketplaceHubPortal() {
                   <button
                     type="button"
                     onClick={() => setIsRfqOpen(false)}
-                    className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-zinc-400 text-xs font-bold"
+                    className="px-4 py-2 rounded-xl bg-[var(--pm-card-hover)] border border-white/10 text-zinc-400 text-xs font-bold"
                   >
                     বাতিল
                   </button>

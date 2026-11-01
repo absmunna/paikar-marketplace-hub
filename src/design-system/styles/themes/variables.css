@@ -7,4 +7,7 @@
 @import "./deepDark.css";
 @import "./colourful.css";
 @import "./nakshiLight.css";
-@import "./greenField.css";
+@import "./greenField.css";  --pm-text-secondary: var(--pm-muted);
+  --pm-text-muted: var(--pm-muted);
+  --pm-surface-hover: var(--pm-card-hover);
+}

@@ -375,7 +375,7 @@ export default function ProductDetailsView() {
               </div>
 
               {product.brand && (
-                <span className="text-[9px] font-bold text-zinc-400 bg-white/5 border border-white/5 px-2 py-0.5 rounded-full">
+                <span className="text-[9px] font-bold text-zinc-400 bg-[var(--pm-card-hover)] border border-white/5 px-2 py-0.5 rounded-full">
                   ব্র্যান্ড: <strong className="text-zinc-200">{product.brand}</strong>
                 </span>
               )}
@@ -411,7 +411,7 @@ export default function ProductDetailsView() {
             </div>
 
             {/* Central Price Display & Buy Box Panel */}
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/5 select-none text-left">
+            <div className="p-5 rounded-2xl bg-[var(--pm-card-hover)] border border-white/5 select-none text-left">
               <div className="flex items-baseline gap-3">
                 <span className="text-3xl font-black text-[#FF7A00]">
                   ৳ {product.price.toLocaleString('bn-BD')} BDT
@@ -438,7 +438,7 @@ export default function ProductDetailsView() {
                       <Zap className="w-2.5 h-2.5" /> Paikar Express
                     </span>
                   ) : (
-                    <span className="text-[9px] text-zinc-400 bg-white/5 px-2 py-0.5 rounded">
+                    <span className="text-[9px] text-zinc-400 bg-[var(--pm-card-hover)] px-2 py-0.5 rounded">
                       মার্চেন্ট শিপিং
                     </span>
                   )}
@@ -463,7 +463,7 @@ export default function ProductDetailsView() {
             </div>
 
             {/* DYNAMIC MODE CONFIGURATION SELECTOR FIELDS */}
-            <div className="space-y-5 pt-2 border-t border-white/[0.04]">
+            <div className="space-y-5 pt-2 border-t border-[var(--pm-border)]">
               
               {/* IF: SERVICE BOOKING PANEL */}
               {isServiceItem && (
@@ -480,7 +480,7 @@ export default function ProductDetailsView() {
                           className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer outline-none ${
                             bookingDate === d 
                               ? "bg-purple-600 text-white border-transparent shadow-lg shadow-purple-600/25 scale-[1.02]" 
-                              : "bg-white/5 text-zinc-300 border-white/10 hover:border-white/20"
+                              : "bg-[var(--pm-card-hover)] text-zinc-300 border-white/10 hover:border-white/20"
                           }`}
                         >
                           {d}
@@ -501,7 +501,7 @@ export default function ProductDetailsView() {
                           className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer outline-none ${
                             bookingSlot === slot 
                               ? "bg-purple-600 text-white border-transparent shadow-lg shadow-purple-600/25 scale-[1.02]" 
-                              : "bg-white/5 text-zinc-300 border-white/10 hover:border-white/20"
+                              : "bg-[var(--pm-card-hover)] text-zinc-300 border-white/10 hover:border-white/20"
                           }`}
                         >
                           {slot}
@@ -530,7 +530,7 @@ export default function ProductDetailsView() {
                           className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer outline-none ${
                             licenseType === lic 
                               ? "bg-violet-600 text-white border-transparent shadow-lg shadow-violet-600/25 scale-[1.02]" 
-                              : "bg-white/5 text-zinc-300 border-white/10 hover:border-white/20"
+                              : "bg-[var(--pm-card-hover)] text-zinc-300 border-white/10 hover:border-white/20"
                           }`}
                         >
                           {lic}
@@ -561,7 +561,7 @@ export default function ProductDetailsView() {
                           className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer outline-none ${
                             selectedSize === v 
                               ? "bg-[#FF7A00] text-white border-transparent shadow-lg shadow-orange-500/25 scale-[1.02]" 
-                              : "bg-white/5 text-zinc-300 border-white/10 hover:border-white/20"
+                              : "bg-[var(--pm-card-hover)] text-zinc-300 border-white/10 hover:border-white/20"
                           }`}
                         >
                           {v}
@@ -582,7 +582,7 @@ export default function ProductDetailsView() {
                           className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer outline-none ${
                             selectedColor === col 
                               ? "bg-white text-zinc-950 border-transparent shadow-md scale-[1.02]" 
-                              : "bg-white/5 text-zinc-300 border-white/10 hover:border-white/20"
+                              : "bg-[var(--pm-card-hover)] text-zinc-300 border-white/10 hover:border-white/20"
                           }`}
                         >
                           {col}
@@ -606,7 +606,7 @@ export default function ProductDetailsView() {
                       const minLimit = isWholesaleItem ? product.moq : 1;
                       setQuantity(Math.max(minLimit, quantity - 1));
                     }} 
-                    className="p-1.5 text-zinc-400 hover:text-white rounded-xl hover:bg-white/5 cursor-pointer outline-none"
+                    className="p-1.5 text-zinc-400 hover:text-white rounded-xl hover:bg-[var(--pm-card-hover)] cursor-pointer outline-none"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
@@ -614,7 +614,7 @@ export default function ProductDetailsView() {
                   <button 
                     type="button"
                     onClick={() => setQuantity(quantity + 1)} 
-                    className="p-1.5 text-zinc-400 hover:text-white rounded-xl hover:bg-white/5 cursor-pointer outline-none"
+                    className="p-1.5 text-zinc-400 hover:text-white rounded-xl hover:bg-[var(--pm-card-hover)] cursor-pointer outline-none"
                   >
                     <Plus className="h-4 w-4" />
                   </button>
@@ -630,7 +630,7 @@ export default function ProductDetailsView() {
           </div>
 
           {/* Unified Central Settle Actions Panel */}
-          <div className="pt-6 border-t border-white/[0.04] space-y-4">
+          <div className="pt-6 border-t border-[var(--pm-border)] space-y-4">
             <div className="flex gap-3 flex-wrap sm:flex-nowrap">
               
               {/* Cart insertion (bypassed for services direct buy flow) */}
@@ -638,7 +638,7 @@ export default function ProductDetailsView() {
                 <button 
                   type="button"
                   onClick={handleAddToCart}
-                  className="flex-1 bg-white/5 hover:bg-white/10 text-white py-4 px-6 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 border border-white/10 active:scale-95 cursor-pointer outline-none"
+                  className="flex-1 bg-[var(--pm-card-hover)] hover:bg-white/10 text-white py-4 px-6 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 border border-white/10 active:scale-95 cursor-pointer outline-none"
                 >
                   <ShoppingCart className="h-4.5 w-4.5 text-[#FF7A00]" /> কার্টে রাখুন
                 </button>
@@ -684,7 +684,7 @@ export default function ProductDetailsView() {
             </div>
 
             {/* Delivery/Escrow assurances badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-white/[0.04] text-left">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-[var(--pm-border)] text-left">
               <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-black/20 border border-white/5">
                 <Truck className="h-5 w-5 text-[#FF7A00] shrink-0 mt-0.5" />
                 <div>
@@ -737,7 +737,7 @@ export default function ProductDetailsView() {
           <button 
             type="button"
             onClick={() => setIsChatModalOpen(true)}
-            className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-bold text-zinc-300 border border-white/10 flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="px-4 py-2.5 rounded-xl bg-[var(--pm-card-hover)] hover:bg-white/10 text-xs font-bold text-zinc-300 border border-white/10 flex items-center gap-1.5 transition-colors cursor-pointer"
           >
             <MessageSquare className="h-3.5 w-3.5 text-[#FF7A00]" /> ইনবক্স মেসেজ
           </button>
