@@ -396,7 +396,7 @@ export const UnifiedPostCard: React.FC<UnifiedPostCardProps> = ({ post }) => {
             <button 
               type="button"
               onClick={handleMessage} 
-              className="px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs sm:text-sm font-black shadow-sm hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap cursor-pointer"
+              className="px-3 sm:px-4 py-2 rounded-xl bg-[var(--pm-accent)] text-white text-xs sm:text-sm font-black shadow-sm hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap cursor-pointer"
             >
               <Gavel className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span>দরপ্রস্তাব দিন</span>
