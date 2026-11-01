@@ -356,7 +356,7 @@ export const B2CHome = () => {
             initial={{ opacity: 0, height: 0, marginTop: 0 }}
             animate={{ opacity: 1, height: 'auto', marginTop: 12 }}
             exit={{ opacity: 0, height: 0, marginTop: 0 }}
-            className="relative bg-gradient-to-r from-pink-600/15 via-orange-600/10 to-amber-600/15 border border-orange-500/15 rounded-2xl p-3 flex items-center justify-between gap-3 overflow-hidden"
+            className="relative bg-[var(--pm-card)] border border-[var(--pm-border)] rounded-2xl p-3 flex items-center justify-between gap-3 overflow-hidden"
           >
             <div className="absolute inset-y-0 left-0 w-1 bg-[var(--pm-accent)]" />
             <div className="flex items-center gap-2.5">
@@ -375,7 +375,7 @@ export const B2CHome = () => {
             </div>
             <button 
               onClick={() => setShowBanner(false)}
-              className="p-1 rounded-full text-zinc-500 hover:text-white transition-colors shrink-0"
+              className="p-1 rounded-full text-[var(--pm-muted)] hover:text-[var(--pm-text)] transition-colors shrink-0"
               title="বন্ধ করুন"
             >
               <X className="w-3.5 h-3.5" />
