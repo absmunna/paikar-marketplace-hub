@@ -205,7 +205,7 @@ export const UnifiedPostCard: React.FC<UnifiedPostCardProps> = ({ post }) => {
             type="button"
             onClick={handleShare}
             aria-label="শেয়ার করুন"
-            className="p-1.5 sm:p-2 rounded-xl text-[var(--pm-text-muted)] hover:text-[var(--pm-text)] hover:bg-white/5 active:scale-90 transition-all"
+            className="p-1.5 sm:p-2 rounded-xl text-[var(--pm-text-muted)] hover:text-[var(--pm-text)] hover:bg-[var(--pm-card-hover)] active:scale-90 transition-all"
           >
             <Share2 className="w-4 h-4" />
           </button>
@@ -217,7 +217,7 @@ export const UnifiedPostCard: React.FC<UnifiedPostCardProps> = ({ post }) => {
               "p-1.5 sm:p-2 rounded-xl transition-all active:scale-90",
               isSaved 
                 ? "text-[var(--pm-accent)] bg-[var(--pm-accent)]/10" 
-                : "text-[var(--pm-text-muted)] hover:text-[var(--pm-text)] hover:bg-white/5"
+                : "text-[var(--pm-text-muted)] hover:text-[var(--pm-text)] hover:bg-[var(--pm-card-hover)]"
             )}
           >
             <Bookmark className={cn("w-4 h-4", isSaved && "fill-[var(--pm-accent)]")} />
