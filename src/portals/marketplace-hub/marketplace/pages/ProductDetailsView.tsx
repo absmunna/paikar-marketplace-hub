@@ -297,14 +297,14 @@ export default function ProductDetailsView() {
       {/* Back Button */}
       <button 
         onClick={() => safeBack(navigate, '/')} 
-        className="inline-flex items-center gap-2 text-xs font-black text-zinc-400 hover:text-white mb-6 transition-colors cursor-pointer"
+        className="inline-flex items-center gap-2 text-xs font-black text-[var(--pm-text-secondary)] hover:text-white mb-6 transition-colors cursor-pointer"
         title="ফিরে যান"
       >
         <ArrowLeft className="h-4 w-4" /> আগের পৃষ্ঠায় ফিরুন
       </button>
 
       {/* Main Details Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-[#141624] p-5 md:p-8 rounded-[2rem] border border-white/5 shadow-2xl items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-[var(--pm-card)] p-5 md:p-8 rounded-[2rem] border border-[var(--pm-border)] shadow-2xl items-start">
         
         {/* LEFT: Gallery (col-span-5) */}
         <div className="lg:col-span-5 flex flex-col gap-4">
@@ -356,27 +356,27 @@ export default function ProductDetailsView() {
             
             {/* Tag headers & Amazon ASIN Catalog Bar */}
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-[var(--pm-success)] border border-emerald-500/20">
                 {isServiceItem ? 'ভেরিফাইড স্লট সচল' : isDigitalItem ? 'অটো ডিসপ্যাচ লাইভ' : 'In Stock & Dispatch Ready'}
               </span>
 
               {/* Unique ASIN Badge with copy button */}
-              <div className="flex items-center gap-1.5 bg-orange-500/10 border border-orange-500/25 px-2.5 py-0.5 rounded-full text-xs">
-                <Package className="w-3 h-3 text-[#FF7A00]" />
+              <div className="flex items-center gap-1.5 bg-[var(--pm-accent-soft)] border border-[var(--pm-accent)]/25 px-2.5 py-0.5 rounded-full text-xs">
+                <Package className="w-3 h-3 text-[var(--pm-accent)]" />
                 <span className="text-[10px] font-mono font-bold text-white">ASIN: {asin}</span>
                 <button
                   type="button"
                   onClick={handleCopyAsin}
-                  className="text-zinc-400 hover:text-white transition-colors cursor-pointer ml-0.5"
+                  className="text-[var(--pm-text-secondary)] hover:text-white transition-colors cursor-pointer ml-0.5"
                   title="ASIN কোড কপি করুন"
                 >
-                  {copiedAsin ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                  {copiedAsin ? <Check className="w-3 h-3 text-[var(--pm-success)]" /> : <Copy className="w-3 h-3" />}
                 </button>
               </div>
 
               {product.brand && (
-                <span className="text-[9px] font-bold text-zinc-400 bg-[var(--pm-card-hover)] border border-white/5 px-2 py-0.5 rounded-full">
-                  ব্র্যান্ড: <strong className="text-zinc-200">{product.brand}</strong>
+                <span className="text-[9px] font-bold text-[var(--pm-text-secondary)] bg-[var(--pm-card-hover)] border border-[var(--pm-border)] px-2 py-0.5 rounded-full">
+                  ব্র্যান্ড: <strong className="text-[var(--pm-text)]">{product.brand}</strong>
                 </span>
               )}
 
@@ -384,7 +384,7 @@ export default function ProductDetailsView() {
               <button
                 type="button"
                 onClick={() => setIsLinkModalOpen(true)}
-                className="text-[9px] font-black text-[#FF7A00] hover:text-orange-400 bg-orange-500/5 hover:bg-orange-500/15 border border-orange-500/30 px-2.5 py-0.5 rounded-full transition-all cursor-pointer flex items-center gap-1"
+                className="text-[9px] font-black text-[var(--pm-accent)] hover:text-[var(--pm-accent)] bg-[var(--pm-accent-soft)] hover:bg-[var(--pm-accent-soft)] border border-[var(--pm-accent)]/30 px-2.5 py-0.5 rounded-full transition-all cursor-pointer flex items-center gap-1"
               >
                 <span>+ স্টক লিঙ্ক করুন</span>
               </button>
@@ -402,27 +402,27 @@ export default function ProductDetailsView() {
                   <Star className="h-3.5 w-3.5 fill-amber-400" />
                 </div>
                 <span className="font-bold text-white">{product.rating}</span>
-                <span className="text-zinc-400">({product.reviews} রিভিউ)</span>
+                <span className="text-[var(--pm-text-secondary)]">({product.reviews} রিভিউ)</span>
               </div>
               <span className="text-zinc-700">·</span>
-              <span className="text-zinc-400">{product.sold} টি ডেলিভারি সম্পন্ন</span>
+              <span className="text-[var(--pm-text-secondary)]">{product.sold} টি ডেলিভারি সম্পন্ন</span>
               <span className="text-zinc-700">·</span>
-              <span className="text-zinc-500 font-mono text-[10px]">EAN: {product.barcode}</span>
+              <span className="text-[var(--pm-muted)] font-mono text-[10px]">EAN: {product.barcode}</span>
             </div>
 
             {/* Central Price Display & Buy Box Panel */}
-            <div className="p-5 rounded-2xl bg-[var(--pm-card-hover)] border border-white/5 select-none text-left">
+            <div className="p-5 rounded-2xl bg-[var(--pm-card-hover)] border border-[var(--pm-border)] select-none text-left">
               <div className="flex items-baseline gap-3">
-                <span className="text-3xl font-black text-[#FF7A00]">
+                <span className="text-3xl font-black text-[var(--pm-accent)]">
                   ৳ {product.price.toLocaleString('bn-BD')} BDT
                 </span>
                 {product.originalPrice && (
-                  <span className="text-xs text-zinc-500 line-through">
+                  <span className="text-xs text-[var(--pm-muted)] line-through">
                     ৳ {product.originalPrice.toLocaleString('bn-BD')}
                   </span>
                 )}
                 {product.originalPrice && product.originalPrice > product.price && (
-                  <span className="text-[10px] font-black text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                  <span className="text-[10px] font-black text-[var(--pm-success)] bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
                     {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% ছাড়
                   </span>
                 )}
@@ -431,14 +431,14 @@ export default function ProductDetailsView() {
               {/* Winning Offer / Buy Box Note */}
               <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-xs flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold text-zinc-400">বিক্রেতা (Featured):</span>
+                  <span className="text-[10px] font-bold text-[var(--pm-text-secondary)]">বিক্রেতা (Featured):</span>
                   <span className="font-bold text-white">{product.seller.name}</span>
                   {product.seller.fulfillmentType === "paikar_express" ? (
-                    <span className="inline-flex items-center gap-1 text-[9px] font-black text-[#FF7A00] bg-orange-500/10 px-2 py-0.5 rounded border border-orange-500/20">
+                    <span className="inline-flex items-center gap-1 text-[9px] font-black text-[var(--pm-accent)] bg-[var(--pm-accent-soft)] px-2 py-0.5 rounded border border-[var(--pm-accent)]/20">
                       <Zap className="w-2.5 h-2.5" /> Paikar Express
                     </span>
                   ) : (
-                    <span className="text-[9px] text-zinc-400 bg-[var(--pm-card-hover)] px-2 py-0.5 rounded">
+                    <span className="text-[9px] text-[var(--pm-text-secondary)] bg-[var(--pm-card-hover)] px-2 py-0.5 rounded">
                       মার্চেন্ট শিপিং
                     </span>
                   )}
@@ -446,16 +446,16 @@ export default function ProductDetailsView() {
 
                 <a
                   href="#multi-seller-offers"
-                  className="text-xs font-black text-[#FF7A00] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="text-xs font-black text-[var(--pm-accent)] hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   অন্যান্য বিক্রেতা ({offers.length} অফার) ৳{Math.min(...offers.map((o) => o.price))} থেকে ↓
                 </a>
               </div>
 
               {isWholesaleItem && (
-                <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-xs font-bold text-zinc-300">
+                <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-xs font-bold text-[var(--pm-text-secondary)]">
                   <span>বাল্ক ভ্যালু ডিসকাউন্ট (MOQ {product.moq}+):</span>
-                  <span className="text-emerald-400 font-black">
+                  <span className="text-[var(--pm-success)] font-black">
                     ৳ {Math.round(product.price * 0.95)} / পিস (৳ {Math.round(product.price * 0.95 * quantity).toLocaleString('bn-BD')} লট)
                   </span>
                 </div>
@@ -470,7 +470,7 @@ export default function ProductDetailsView() {
                 <div className="space-y-4 text-left">
                   {/* Scheduling date */}
                   <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-wider text-zinc-400 mb-2">সার্ভিস বুকিং তারিখ নির্ধারণ:</h3>
+                    <h3 className="text-[10px] font-black uppercase tracking-wider text-[var(--pm-text-secondary)] mb-2">সার্ভিস বুকিং তারিখ নির্ধারণ:</h3>
                     <div className="flex gap-2 flex-wrap select-none">
                       {["আজকে (Today)", "আগামীকাল (Tomorrow)", "পরশু (Day After)"].map((d) => (
                         <button 
@@ -480,7 +480,7 @@ export default function ProductDetailsView() {
                           className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer outline-none ${
                             bookingDate === d 
                               ? "bg-purple-600 text-white border-transparent shadow-lg shadow-purple-600/25 scale-[1.02]" 
-                              : "bg-[var(--pm-card-hover)] text-zinc-300 border-white/10 hover:border-white/20"
+                              : "bg-[var(--pm-card-hover)] text-[var(--pm-text-secondary)] border-white/10 hover:border-white/20"
                           }`}
                         >
                           {d}
@@ -491,7 +491,7 @@ export default function ProductDetailsView() {
 
                   {/* Scheduling timeslots */}
                   <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-wider text-zinc-400 mb-2">উপযুক্ত সময় নির্বাচন:</h3>
+                    <h3 className="text-[10px] font-black uppercase tracking-wider text-[var(--pm-text-secondary)] mb-2">উপযুক্ত সময় নির্বাচন:</h3>
                     <div className="flex gap-2 flex-wrap select-none">
                       {["সকাল ১০:০০ - দুপুর ১২:০০", "দুপুর ১২:০০ - বিকাল ৩:০০", "বিকাল ৪:০০ - সন্ধ্যা ৬:০০"].map((slot) => (
                         <button 
@@ -501,7 +501,7 @@ export default function ProductDetailsView() {
                           className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer outline-none ${
                             bookingSlot === slot 
                               ? "bg-purple-600 text-white border-transparent shadow-lg shadow-purple-600/25 scale-[1.02]" 
-                              : "bg-[var(--pm-card-hover)] text-zinc-300 border-white/10 hover:border-white/20"
+                              : "bg-[var(--pm-card-hover)] text-[var(--pm-text-secondary)] border-white/10 hover:border-white/20"
                           }`}
                         >
                           {slot}
@@ -520,7 +520,7 @@ export default function ProductDetailsView() {
               {isDigitalItem && (
                 <div className="space-y-4 text-left">
                   <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-wider text-zinc-400 mb-2">লাইসেন্স টাইপ নির্বাচন করুন:</h3>
+                    <h3 className="text-[10px] font-black uppercase tracking-wider text-[var(--pm-text-secondary)] mb-2">লাইসেন্স টাইপ নির্বাচন করুন:</h3>
                     <div className="flex gap-2 flex-wrap select-none">
                       {["সিঙ্গেল লাইসেন্স (Personal Keys)", "আনলিমিটেড ডেভেলপার প্যাক (Unlimited)"].map((lic) => (
                         <button 
@@ -530,7 +530,7 @@ export default function ProductDetailsView() {
                           className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer outline-none ${
                             licenseType === lic 
                               ? "bg-violet-600 text-white border-transparent shadow-lg shadow-violet-600/25 scale-[1.02]" 
-                              : "bg-[var(--pm-card-hover)] text-zinc-300 border-white/10 hover:border-white/20"
+                              : "bg-[var(--pm-card-hover)] text-[var(--pm-text-secondary)] border-white/10 hover:border-white/20"
                           }`}
                         >
                           {lic}
@@ -551,7 +551,7 @@ export default function ProductDetailsView() {
                 <div className="space-y-4 text-left">
                   {/* Sizes */}
                   <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-wider text-zinc-400 mb-2">সাইজ বা পরিমাপ নির্বাচন:</h3>
+                    <h3 className="text-[10px] font-black uppercase tracking-wider text-[var(--pm-text-secondary)] mb-2">সাইজ বা পরিমাপ নির্বাচন:</h3>
                     <div className="flex gap-2 flex-wrap select-none">
                       {product.variants.map((v) => (
                         <button 
@@ -560,8 +560,8 @@ export default function ProductDetailsView() {
                           onClick={() => setSelectedSize(v)}
                           className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer outline-none ${
                             selectedSize === v 
-                              ? "bg-[#FF7A00] text-white border-transparent shadow-lg shadow-orange-500/25 scale-[1.02]" 
-                              : "bg-[var(--pm-card-hover)] text-zinc-300 border-white/10 hover:border-white/20"
+                              ? "bg-[var(--pm-accent)] text-white border-transparent shadow-lg shadow-orange-500/25 scale-[1.02]" 
+                              : "bg-[var(--pm-card-hover)] text-[var(--pm-text-secondary)] border-white/10 hover:border-white/20"
                           }`}
                         >
                           {v}
@@ -572,7 +572,7 @@ export default function ProductDetailsView() {
 
                   {/* Colors */}
                   <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-wider text-zinc-400 mb-2">কালার নির্বাচন:</h3>
+                    <h3 className="text-[10px] font-black uppercase tracking-wider text-[var(--pm-text-secondary)] mb-2">কালার নির্বাচন:</h3>
                     <div className="flex gap-2 flex-wrap select-none">
                       {product.colors.map((col) => (
                         <button 
@@ -582,7 +582,7 @@ export default function ProductDetailsView() {
                           className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer outline-none ${
                             selectedColor === col 
                               ? "bg-white text-zinc-950 border-transparent shadow-md scale-[1.02]" 
-                              : "bg-[var(--pm-card-hover)] text-zinc-300 border-white/10 hover:border-white/20"
+                              : "bg-[var(--pm-card-hover)] text-[var(--pm-text-secondary)] border-white/10 hover:border-white/20"
                           }`}
                         >
                           {col}
@@ -595,7 +595,7 @@ export default function ProductDetailsView() {
 
               {/* UNIVERSAL QUANTITY SELECTOR */}
               <div className="text-left select-none">
-                <h3 className="text-[10px] font-black uppercase tracking-wider text-zinc-400 mb-2">
+                <h3 className="text-[10px] font-black uppercase tracking-wider text-[var(--pm-text-secondary)] mb-2">
                   {isWholesaleItem ? `পরিমাণ (ন্যূনতম MOQ: ${product.moq} পিস):` : 'পরিমাণ বা লট সাইজ:'}
                 </h3>
                 <div className="flex items-center gap-3.5 w-36 border border-white/10 rounded-2xl bg-black/40 p-1">
@@ -606,7 +606,7 @@ export default function ProductDetailsView() {
                       const minLimit = isWholesaleItem ? product.moq : 1;
                       setQuantity(Math.max(minLimit, quantity - 1));
                     }} 
-                    className="p-1.5 text-zinc-400 hover:text-white rounded-xl hover:bg-[var(--pm-card-hover)] cursor-pointer outline-none"
+                    className="p-1.5 text-[var(--pm-text-secondary)] hover:text-white rounded-xl hover:bg-[var(--pm-card-hover)] cursor-pointer outline-none"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
@@ -614,7 +614,7 @@ export default function ProductDetailsView() {
                   <button 
                     type="button"
                     onClick={() => setQuantity(quantity + 1)} 
-                    className="p-1.5 text-zinc-400 hover:text-white rounded-xl hover:bg-[var(--pm-card-hover)] cursor-pointer outline-none"
+                    className="p-1.5 text-[var(--pm-text-secondary)] hover:text-white rounded-xl hover:bg-[var(--pm-card-hover)] cursor-pointer outline-none"
                   >
                     <Plus className="h-4 w-4" />
                   </button>
@@ -640,7 +640,7 @@ export default function ProductDetailsView() {
                   onClick={handleAddToCart}
                   className="flex-1 bg-[var(--pm-card-hover)] hover:bg-white/10 text-white py-4 px-6 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 border border-white/10 active:scale-95 cursor-pointer outline-none"
                 >
-                  <ShoppingCart className="h-4.5 w-4.5 text-[#FF7A00]" /> কার্টে রাখুন
+                  <ShoppingCart className="h-4.5 w-4.5 text-[var(--pm-accent)]" /> কার্টে রাখুন
                 </button>
               )}
 
@@ -648,7 +648,7 @@ export default function ProductDetailsView() {
               <button 
                 type="button"
                 onClick={handleBuyNow}
-                className="flex-1 bg-gradient-to-r from-orange-500 to-[#FF7A00] hover:from-orange-600 hover:to-[#e06b00] text-white py-4 px-6 rounded-2xl font-black text-sm transition-all shadow-xl shadow-orange-500/10 flex items-center justify-center gap-2 active:scale-95 cursor-pointer outline-none"
+                className="flex-1 bg-[var(--pm-accent)] hover:bg-[var(--pm-accent-hover)] text-white py-4 px-6 rounded-2xl font-black text-sm transition-all shadow-xl shadow-orange-500/10 flex items-center justify-center gap-2 active:scale-95 cursor-pointer outline-none"
               >
                 {isServiceItem ? (
                   <>
@@ -675,7 +675,7 @@ export default function ProductDetailsView() {
                   toast(isWishlisted ? "উইশলিস্ট থেকে সরানো হয়েছে" : "উইশলিস্টে যুক্ত হয়েছে");
                 }}
                 className={`p-4 border rounded-2xl transition-all cursor-pointer outline-none ${
-                  isWishlisted ? "border-rose-500 bg-rose-500/10 text-rose-500" : "border-white/10 text-zinc-400 hover:text-rose-500 hover:border-rose-500/30"
+                  isWishlisted ? "border-rose-500 bg-rose-500/10 text-rose-500" : "border-white/10 text-[var(--pm-text-secondary)] hover:text-rose-500 hover:border-rose-500/30"
                 }`}
                 title="উইশলিস্ট"
               >
@@ -686,23 +686,23 @@ export default function ProductDetailsView() {
             {/* Delivery/Escrow assurances badges */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-[var(--pm-border)] text-left">
               <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-black/20 border border-white/5">
-                <Truck className="h-5 w-5 text-[#FF7A00] shrink-0 mt-0.5" />
+                <Truck className="h-5 w-5 text-[var(--pm-accent)] shrink-0 mt-0.5" />
                 <div>
                   <p className="text-xs font-bold text-white">
                     {isDigitalItem ? 'তাৎক্ষণিক ডিজিটাল ডিসপ্যাচ' : 'সারা বাংলাদেশে নির্ভরযোগ্য কুরিয়ার'}
                   </p>
-                  <p className="text-[10px] text-zinc-400 mt-0.5">
+                  <p className="text-[10px] text-[var(--pm-text-secondary)] mt-0.5">
                     {isDigitalItem ? 'ইমেইল ঠিকানায় সরাসরি ডাউনলোড লিংক পাবেন' : 'ঢাকার ভেতরে ২৪ ঘন্টা, বাইরে ৩-৫ দিনে নিরাপদ ডেলিভারি'}
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-black/20 border border-white/5">
-                <ShieldCheck className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
+                <ShieldCheck className="h-5 w-5 text-[var(--pm-success)] shrink-0 mt-0.5" />
                 <div>
                   <p className="text-xs font-bold text-white">
                     {isServiceItem ? 'ভেরিফাইড এসক্রো পেমেন্ট' : 'পেইকারমার্ট ভেরিফাইড কোয়ালিটি'}
                   </p>
-                  <p className="text-[10px] text-zinc-400 mt-0.5">
+                  <p className="text-[10px] text-[var(--pm-text-secondary)] mt-0.5">
                     {isServiceItem ? 'সার্ভিস কাজ সন্তোষজনক শেষ হওয়ার পরই পেমেন্ট রিলিজ' : '৭ দিনের মধ্যে সহজ রিটার্ন, এক্সচেঞ্জ এবং লাইভ রিফান্ড নিশ্চয়তা'}
                   </p>
                 </div>
@@ -715,21 +715,21 @@ export default function ProductDetailsView() {
       </div>
 
       {/* Multi-Vendor Profile Summary Banner */}
-      <div className="mt-6 bg-[#141624] p-5 md:p-6 rounded-[2rem] border border-white/5 flex items-center justify-between flex-wrap gap-4 shadow-xl select-none text-left">
+      <div className="mt-6 bg-[var(--pm-card)] p-5 md:p-6 rounded-[2rem] border border-[var(--pm-border)] flex items-center justify-between flex-wrap gap-4 shadow-xl select-none text-left">
         <div className="flex items-center gap-4">
-          <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 text-[#FF7A00] border border-[#FF7A00]/20 flex items-center justify-center font-black text-xl">
+          <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-orange-500/20 to-amber-500/10 text-[var(--pm-accent)] border border-[var(--pm-accent)]/20 flex items-center justify-center font-black text-xl">
             <StoreIcon className="h-7 w-7" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-black text-white">{product.seller.name}</h3>
               {product.seller.verified && (
-                <span className="inline-flex items-center gap-1 text-[8.5px] font-bold bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                <span className="inline-flex items-center gap-1 text-[8.5px] font-bold bg-emerald-500/10 text-[var(--pm-success)] px-2 py-0.5 rounded-full border border-emerald-500/20">
                   <CheckCircle2 className="h-3 w-3" /> ভেরিফাইড মার্চেন্ট
                 </span>
               )}
             </div>
-            <p className="text-[11px] text-zinc-400 mt-1">{product.seller.location} · রেটিং ৪.৯/৫.০</p>
+            <p className="text-[11px] text-[var(--pm-text-secondary)] mt-1">{product.seller.location} · রেটিং ৪.৯/৫.০</p>
           </div>
         </div>
 
@@ -737,13 +737,13 @@ export default function ProductDetailsView() {
           <button 
             type="button"
             onClick={() => setIsChatModalOpen(true)}
-            className="px-4 py-2.5 rounded-xl bg-[var(--pm-card-hover)] hover:bg-white/10 text-xs font-bold text-zinc-300 border border-white/10 flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="px-4 py-2.5 rounded-xl bg-[var(--pm-card-hover)] hover:bg-white/10 text-xs font-bold text-[var(--pm-text-secondary)] border border-white/10 flex items-center gap-1.5 transition-colors cursor-pointer"
           >
-            <MessageSquare className="h-3.5 w-3.5 text-[#FF7A00]" /> ইনবক্স মেসেজ
+            <MessageSquare className="h-3.5 w-3.5 text-[var(--pm-accent)]" /> ইনবক্স মেসেজ
           </button>
           <Link 
             to={`/store/${product.seller.id}`}
-            className="px-5 py-2.5 bg-[#FF7A00] hover:bg-[#e06b00] text-white rounded-xl text-xs font-black transition-all shadow-md shadow-[#FF7A00]/20 cursor-pointer"
+            className="px-5 py-2.5 bg-[var(--pm-accent)] hover:bg-[var(--pm-accent-hover)] text-white rounded-xl text-xs font-black transition-all shadow-md shadow-[var(--pm-accent)]/20 cursor-pointer"
           >
             স্টোর ভিজিট
           </Link>
@@ -751,11 +751,11 @@ export default function ProductDetailsView() {
       </div>
 
       {/* Description & Technical specification sheets */}
-      <div className="mt-6 bg-[#141624] p-6 md:p-8 rounded-[2rem] border border-white/5 shadow-xl text-left select-none">
+      <div className="mt-6 bg-[var(--pm-card)] p-6 md:p-8 rounded-[2rem] border border-[var(--pm-border)] shadow-xl text-left select-none">
         <h2 className="text-base font-black text-white mb-4 flex items-center gap-2 border-b border-white/5 pb-3">
-          <Sparkles className="h-5 w-5 text-[#FF7A00]" /> পণ্যের বিবরণ ও স্পেসিফিকেশন শিট
+          <Sparkles className="h-5 w-5 text-[var(--pm-accent)]" /> পণ্যের বিবরণ ও স্পেসিফিকেশন শিট
         </h2>
-        <p className="text-xs text-zinc-300 leading-relaxed whitespace-pre-line font-medium">
+        <p className="text-xs text-[var(--pm-text-secondary)] leading-relaxed whitespace-pre-line font-medium">
           {product.description}
         </p>
       </div>
@@ -778,7 +778,7 @@ export default function ProductDetailsView() {
       </div>
 
       {/* Reviews Section */}
-      <div className="mt-6 bg-[#141624] p-6 md:p-8 rounded-[2rem] border border-white/5 shadow-xl">
+      <div className="mt-6 bg-[var(--pm-card)] p-6 md:p-8 rounded-[2rem] border border-[var(--pm-border)] shadow-xl">
         <ProductReviews productId={product.id} shopId={product.seller.id} productTitle={product.title} />
       </div>
 
