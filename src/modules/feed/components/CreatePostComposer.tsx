@@ -260,7 +260,7 @@ export const CreatePostComposer: React.FC<CreatePostComposerProps> = ({
               <span className="font-bold truncate">{label}</span>
             </button>
           ) : (
-            <Link key={kind} to={href} className="w-full">
+            <Link key={kind} to={href ?? "/"} className="w-full">
               <button
                 type="button"
                 className="w-full flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-[10px] sm:text-xs py-2 rounded-xl bg-[var(--pm-bg)]/70 border border-[var(--pm-border)] hover:bg-[var(--pm-surface-hover)] text-[var(--pm-text)] transition-colors active:scale-98 cursor-pointer"

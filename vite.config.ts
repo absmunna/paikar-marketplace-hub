@@ -27,6 +27,15 @@ const paikarMartAliases = [
   { find: /^@\/providers(?=\/|$)/, replacement: src("app/providers") },
   { find: /^@\/router(?=\/|$)/, replacement: src("app/router") },
   { find: /^@\/api(?=\/|$)/, replacement: src("core/api") },
+  { find: /^@\/store(?=\/|$)/, replacement: src("app/store") },
+  { find: /^@\/context(?=\/|$)/, replacement: src("app/context") },
+  { find: /^@\/guards(?=\/|$)/, replacement: src("core/auth/guards") },
+  { find: /^@\/permissions(?=\/|$)/, replacement: src("core/auth/permissions") },
+  { find: /^@\/services(?=\/|$)/, replacement: src("core/services") },
+  { find: /^@\/config(?=\/|$)/, replacement: src("core/config") },
+  { find: /^@\/pages(?=\/|$)/, replacement: src("pages") },
+  { find: /^@\/types(?=\/|$)/, replacement: src("shared/types") },
+  { find: /^@\/constants(?=\/|$)/, replacement: src("shared/constants") },
 ];
 
 export default defineConfig({

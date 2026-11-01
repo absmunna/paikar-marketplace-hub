@@ -26,7 +26,7 @@ export interface LocationObject {
   pathname: string;
   search: string;
   hash: string;
-  state: unknown;
+  state: Record<string, unknown> | null;
   key: string;
 }
 
@@ -50,6 +50,7 @@ export type SearchParamsInit =
 
 export interface RouteProps {
   path?: string;
+  index?: boolean;
   element?: ReactNode;
   children?: ReactNode;
 }
@@ -98,7 +99,7 @@ function readLocation(): LocationObject {
     pathname: window.location.pathname || "/",
     search: window.location.search,
     hash: window.location.hash,
-    state: state.usr ?? null,
+    state: (state.usr ?? null) as Record<string, unknown> | null,
     key: state.key || "default",
   };
 }
@@ -183,7 +184,7 @@ export function BrowserRouter({ children }: { children?: ReactNode }) {
       pathname: resolved.pathname,
       search: resolved.search,
       hash: resolved.hash,
-      state: state.usr,
+      state: (state.usr ?? null) as Record<string, unknown> | null,
       key,
     });
   }, []);
@@ -223,8 +224,8 @@ export function useNavigate(): NavigateFunction {
   return ctx.navigate;
 }
 
-export function useParams(): Record<string, string | undefined> {
-  return useContext(MatchContext).params;
+export function useParams<T = Record<string, string | undefined>>(): T {
+  return useContext(MatchContext).params as T;
 }
 
 export function useSearchParams(): [
@@ -336,18 +337,43 @@ function toHref(to: To): string {
 }
 
 export interface LinkProps
-  extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> {
+  extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "className" | "style"> {
   to: To;
   replace?: boolean;
   state?: unknown;
+  className?: string | ((args: { isActive?: boolean; isPending?: boolean }) => string | undefined);
+  style?:
+    | React.CSSProperties
+    | ((args: { isActive?: boolean; isPending?: boolean }) => React.CSSProperties | undefined);
 }
 
-export const Link = ({ to, replace, state, onClick, target, ...rest }: LinkProps) => {
+export const Link = ({
+  to,
+  replace,
+  state,
+  onClick,
+  target,
+  className,
+  style,
+  ...rest
+}: LinkProps) => {
   const navigate = useNavigate();
   const external = typeof to === "string" && /^https?:\/\//i.test(to);
+  const resolvedClassName =
+    typeof className === "function" ? className({}) : className;
+  const resolvedStyle = typeof style === "function" ? style({}) : style;
 
   if (external || (target && target !== "_self")) {
-    return <a href={toHref(to)} target={target} onClick={onClick} {...rest} />;
+    return (
+      <a
+        href={toHref(to)}
+        target={target}
+        onClick={onClick}
+        className={resolvedClassName}
+        style={resolvedStyle}
+        {...rest}
+      />
+    );
   }
 
   const handleClick = (event: ReactMouseEvent<HTMLAnchorElement>) => {
@@ -357,7 +383,15 @@ export const Link = ({ to, replace, state, onClick, target, ...rest }: LinkProps
     navigate(to, { replace, state });
   };
 
-  return <a href={toHref(to)} onClick={handleClick} {...rest} />;
+  return (
+    <a
+      href={toHref(to)}
+      onClick={handleClick}
+      className={resolvedClassName}
+      style={resolvedStyle}
+      {...rest}
+    />
+  );
 };
 
 export interface NavLinkProps extends LinkProps {
@@ -403,7 +437,7 @@ function collectRoutes(children: ReactNode): RouteDef[] {
     if (!isValidElement(child)) return;
     const props = child.props as RouteProps & { children?: ReactNode };
     if (child.type === Route) {
-      const def: RouteDef = { path: props.path ?? "", element: props.element };
+      const def: RouteDef = { path: props.index ? "" : props.path ?? "", element: props.element };
       const kids = collectRoutes(props.children);
       if (kids.length > 0) def.children = kids;
       defs.push(def);

@@ -209,7 +209,7 @@ export default function VendorDetail() {
             {tab === "products" && (
               <div className="product-sink-grid">
                 {(vendor.products || []).length > 0 ? (
-                  vendor.products.map((p: any) => (
+                  ((vendor.products || []) as any[]).map((p: any) => (
                     <ProductCard key={p.id} product={p} />
                   ))
                 ) : (

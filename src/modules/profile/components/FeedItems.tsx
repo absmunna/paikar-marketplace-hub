@@ -23,7 +23,7 @@ export const FeedItemCard = React.forwardRef<HTMLDivElement, FeedItemCardProps>(
     isVerified,
     authorRole,
     timestamp: item.timestamp,
-    content: item.content,
+    content: item.content || '',
     imageUrl: item.imageUrl,
     likes: item.likes,
     comments: item.comments,

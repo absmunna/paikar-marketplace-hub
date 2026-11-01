@@ -20,7 +20,9 @@
 
     // PaikarMart's source tree was authored outside strict mode; the migrated
     // app shares this tsconfig, so strictness matches its original settings.
+    // strictNullChecks stays on: the TanStack Start tooling requires it.
     "strict": false,
+    "strictNullChecks": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
 
