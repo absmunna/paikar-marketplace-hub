@@ -38,9 +38,9 @@ export const CheckoutPage: React.FC = () => {
   // we bypass the shopping cart store and check out those items directly!
   const cartStore = useCartStore();
   
-  const customItems = location.state?.items;
-  const customSubtotal = location.state?.subtotal;
-  const discount = location.state?.discount || 0;
+  const customItems = location.state?.items as CartItem[] | undefined;
+  const customSubtotal = location.state?.subtotal as number | undefined;
+  const discount = (location.state?.discount as number | undefined) || 0;
 
   const items = customItems || cartStore.items;
   const subtotal = customSubtotal || (customItems ? customItems.reduce((acc: number, cur: any) => acc + (cur.price * (cur.quantity || 1)), 0) : cartStore.getTotalPrice());
