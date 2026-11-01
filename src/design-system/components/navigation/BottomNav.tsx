@@ -40,112 +40,60 @@ export const BottomNav = ({ isVisible }: { isVisible?: boolean }) => {
 
   const shouldShow = navBehavior === 'fixed' ? true : (isVisible !== undefined ? isVisible : isNavVisibleStore);
 
-  const isPortalActive = location.pathname === '/portals' || 
-                         location.pathname === '/apps' || 
-                         location.pathname === '/hub' || 
-                         location.pathname === '/portal-hub' ||
-                         location.pathname.startsWith('/portals/');
-
-  const isVideoActive = location.pathname === '/video' || 
-                        location.pathname.startsWith('/video/') || 
-                        location.pathname === '/reels';
-
+  const p = location.pathname;
   const isActive = (path: string) => {
-    if (path === '/portals') return isPortalActive;
-    if (path === '/messages') return location.pathname.startsWith('/messages');
-    return location.pathname === path;
+    if (path === '/') return p === '/' || p === '/feed' || p === '/social';
+    if (path === '/market') return p === '/market' || p.startsWith('/shop') || p.startsWith('/marketplace') || p.startsWith('/product');
+    if (path === '/services') return p.startsWith('/services') || p.startsWith('/local');
+    if (path === '/video') return p.startsWith('/video') || p === '/reels';
+    return p.startsWith('/profile') || p === '/login';
   };
 
   const profilePath = isAuthenticated ? '/profile' : '/login';
-  const profileLabel = isAuthenticated ? t('profile') : (lang === 'BN' ? 'লগইন' : 'Login');
+  const profileLabel = isAuthenticated ? (lang === 'BN' ? 'প্রোফাইল' : 'Profile') : (lang === 'BN' ? 'লগইন' : 'Login');
   const ProfileIcon = isAuthenticated ? User : LogIn;
 
   const navItems = [
-    { label: lang === 'BN' ? 'এক্সপ্লোর' : 'Explore', icon: Compass, path: '/portals' },
+    { label: lang === 'BN' ? 'হোম' : 'Home', icon: Home, path: '/' },
     { label: lang === 'BN' ? 'মার্কেট' : 'Market', icon: Store, path: '/market' },
-    { label: lang === 'BN' ? 'হোম' : 'Home', icon: Home, path: '/', isCenter: true },
+    { label: lang === 'BN' ? 'সার্ভিস' : 'Services', icon: Compass, path: '/services' },
     { label: lang === 'BN' ? 'ভিডিও' : 'Video', icon: PlayCircle, path: '/video' },
     { label: profileLabel, icon: ProfileIcon, path: profilePath },
   ];
 
   return (
-    <nav className={`fixed bottom-0 left-0 right-0 z-40 glass h-[68px] w-full border-t border-white/5 pb-safe shadow-[0_-8px_30px_rgb(0,0,0,0.5)] flex items-center select-none transition-transform duration-300 ease-in-out ${
+    <nav className={`fixed bottom-0 left-0 right-0 z-40 md:hidden h-[64px] w-full border-t border-[var(--pm-border)] bg-[var(--pm-bg)]/95 backdrop-blur-xl pb-safe flex items-center select-none transition-transform duration-300 ease-in-out ${
       shouldShow ? 'translate-y-0' : 'translate-y-full'
     }`}>
-      <div className="w-full h-full flex items-center justify-around px-2 relative">
-        {navItems.map((item) => (
-          item.isCenter ? (
-            <motion.div
+      <div className="w-full h-full flex items-stretch justify-around px-1">
+        {navItems.map((item) => {
+          const active = isActive(item.path);
+          return (
+            <Link
               key={item.path}
-              whileTap={{ scale: 0.85 }}
-              whileHover={{ scale: 1.05 }}
-              className="relative z-50 -mt-10"
+              to={item.path}
+              aria-label={item.label}
+              className={cn(
+                "relative flex flex-1 flex-col items-center justify-center gap-1 transition-colors active:scale-95",
+                active ? "text-[var(--pm-accent)]" : "text-[var(--pm-muted)] hover:text-[var(--pm-text)]"
+              )}
             >
-              <Link 
-                to={item.path}
-                className={cn(
-                  "relative w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 border-4",
-                  isActive(item.path) 
-                  ? "border-white bg-[#006a4e] scale-110" 
-                  : "border-white/20 bg-[#006a4e] hover:border-white/40"
-                )}
-                title={item.label}
-              >
-                {/* Home icon with Red interior to represent Bangladesh Flag */}
-                <item.icon 
-                  className="w-8 h-8 text-white z-10" 
-                  fill="#f42a41" // Bangladesh Flag Red
-                  strokeWidth={2.5}
+              {active && <span className="absolute top-0 h-[3px] w-8 rounded-b-full bg-[var(--pm-accent)]" />}
+              {item.path === '/profile' && user && (user.avatar || user.avatarUrl) ? (
+                <img
+                  src={user.avatar || user.avatarUrl}
+                  alt=""
+                  className={cn("w-6 h-6 rounded-full object-cover border-2", active ? "border-[var(--pm-accent)]" : "border-transparent")}
                 />
-                
-                {/* Pulse effect for center button */}
-                <span className="absolute inset-0 rounded-full bg-white/10 animate-ping" />
-              </Link>
-            </motion.div>
-          ) : (
-            <motion.div
-              key={item.label}
-              whileTap={{ scale: 0.92 }}
-              className="flex-1"
-            >
-              <Link 
-                to={item.path}
-                className={cn(
-                  "flex flex-col items-center justify-center w-full min-h-[56px] gap-1 transition-all duration-200",
-                  isActive(item.path)
-                  ? "text-[var(--pm-accent)]" 
-                  : "text-zinc-500 hover:text-white"
-                )}
-              >
-                {item.path === '/profile' && user && (user.avatar || user.avatarUrl) ? (
-                  <div className={cn(
-                    "w-6 h-6 rounded-full overflow-hidden border-2",
-                    isActive(item.path) ? "border-[var(--pm-accent)]" : "border-transparent"
-                  )}>
-                    <img 
-                      src={user.avatar || user.avatarUrl} 
-                      alt="P" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ) : (
-                  <item.icon 
-                    className={cn(
-                      "w-5.5 h-5.5 transition-all",
-                      isActive(item.path) ? "stroke-[2.5px] scale-110" : "stroke-[2px]"
-                    )} 
-                  />
-                )}
-                <span className={cn(
-                  "text-[9px] font-black uppercase tracking-tighter",
-                  isActive(item.path) ? "opacity-100" : "opacity-60"
-                )}>
-                  {item.label}
-                </span>
-              </Link>
-            </motion.div>
-          )
-        ))}
+              ) : (
+                <item.icon className="w-[22px] h-[22px]" strokeWidth={active ? 2.4 : 1.8} />
+              )}
+              <span className={cn("text-[11px] leading-none", active ? "font-semibold" : "font-medium")}>
+                {item.label}
+              </span>
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );
