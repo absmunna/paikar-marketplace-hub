@@ -3,6 +3,12 @@ import { lazy, Suspense, useEffect, useState } from "react";
 
 // The PaikarMart app is a client-side SPA (it owns its own history via the
 // react-router-dom shim), so it mounts only after hydration in the browser.
+// It must mount inside its own providers (QueryProvider, ThemeProvider,
+// AuthProvider, RouterProvider/BrowserRouter, ...), exactly like its original
+// entry file did.
+const PaikarMartProviders = lazy(() =>
+  import("@/app/providers/AppProviders").then((m) => ({ default: m.AppProviders }))
+);
 const PaikarMartApp = lazy(() => import("@/app/App"));
 
 export const Route = createFileRoute("/")({
@@ -39,10 +45,12 @@ function Index() {
   }
 
   return (
-    <Suspense
-      fallback={<div className="min-h-screen" style={{ backgroundColor: "var(--pm-bg, #fcfbf8)" }} />}
-    >
-      <PaikarMartApp />
-    </Suspense>
+    <PaikarMartProviders>
+      <Suspense
+        fallback={<div className="min-h-screen" style={{ backgroundColor: "var(--pm-bg, #fcfbf8)" }} />}
+      >
+        <PaikarMartApp />
+      </Suspense>
+    </PaikarMartProviders>
   );
 }
