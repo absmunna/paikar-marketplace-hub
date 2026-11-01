@@ -1,9 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { lazy, Suspense, useEffect, useState } from "react";
 
-// The PaikarMart app is a client-side SPA (it owns its own history via the
-// react-router-dom shim), so it mounts only after hydration in the browser.
-const PaikarMartApp = lazy(() => import("@/app/App"));
+import { PaikarMartMount } from "@/paikarmart/Mount";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,25 +21,5 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Index,
+  component: PaikarMartMount,
 });
-
-function Index() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return <div className="min-h-screen" style={{ backgroundColor: "var(--pm-bg, #fcfbf8)" }} />;
-  }
-
-  return (
-    <Suspense
-      fallback={<div className="min-h-screen" style={{ backgroundColor: "var(--pm-bg, #fcfbf8)" }} />}
-    >
-      <PaikarMartApp />
-    </Suspense>
-  );
-}
