@@ -346,12 +346,33 @@ export interface LinkProps
     | ((args: { isActive?: boolean; isPending?: boolean }) => React.CSSProperties | undefined);
 }
 
-export const Link = ({ to, replace, state, onClick, target, ...rest }: LinkProps) => {
+export const Link = ({
+  to,
+  replace,
+  state,
+  onClick,
+  target,
+  className,
+  style,
+  ...rest
+}: LinkProps) => {
   const navigate = useNavigate();
   const external = typeof to === "string" && /^https?:\/\//i.test(to);
+  const resolvedClassName =
+    typeof className === "function" ? className({}) : className;
+  const resolvedStyle = typeof style === "function" ? style({}) : style;
 
   if (external || (target && target !== "_self")) {
-    return <a href={toHref(to)} target={target} onClick={onClick} {...rest} />;
+    return (
+      <a
+        href={toHref(to)}
+        target={target}
+        onClick={onClick}
+        className={resolvedClassName}
+        style={resolvedStyle}
+        {...rest}
+      />
+    );
   }
 
   const handleClick = (event: ReactMouseEvent<HTMLAnchorElement>) => {
@@ -361,7 +382,15 @@ export const Link = ({ to, replace, state, onClick, target, ...rest }: LinkProps
     navigate(to, { replace, state });
   };
 
-  return <a href={toHref(to)} onClick={handleClick} {...rest} />;
+  return (
+    <a
+      href={toHref(to)}
+      onClick={handleClick}
+      className={resolvedClassName}
+      style={resolvedStyle}
+      {...rest}
+    />
+  );
 };
 
 export interface NavLinkProps extends LinkProps {
