@@ -205,7 +205,7 @@ export const UnifiedPostCard: React.FC<UnifiedPostCardProps> = ({ post }) => {
             type="button"
             onClick={handleShare}
             aria-label="শেয়ার করুন"
-            className="p-1.5 sm:p-2 rounded-xl text-[var(--pm-text-muted)] hover:text-[var(--pm-text)] hover:bg-white/5 active:scale-90 transition-all"
+            className="p-1.5 sm:p-2 rounded-xl text-[var(--pm-text-muted)] hover:text-[var(--pm-text)] hover:bg-[var(--pm-card-hover)] active:scale-90 transition-all"
           >
             <Share2 className="w-4 h-4" />
           </button>
@@ -217,7 +217,7 @@ export const UnifiedPostCard: React.FC<UnifiedPostCardProps> = ({ post }) => {
               "p-1.5 sm:p-2 rounded-xl transition-all active:scale-90",
               isSaved 
                 ? "text-[var(--pm-accent)] bg-[var(--pm-accent)]/10" 
-                : "text-[var(--pm-text-muted)] hover:text-[var(--pm-text)] hover:bg-white/5"
+                : "text-[var(--pm-text-muted)] hover:text-[var(--pm-text)] hover:bg-[var(--pm-card-hover)]"
             )}
           >
             <Bookmark className={cn("w-4 h-4", isSaved && "fill-[var(--pm-accent)]")} />
@@ -396,7 +396,7 @@ export const UnifiedPostCard: React.FC<UnifiedPostCardProps> = ({ post }) => {
             <button 
               type="button"
               onClick={handleMessage} 
-              className="px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs sm:text-sm font-black shadow-sm hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap cursor-pointer"
+              className="px-3 sm:px-4 py-2 rounded-xl bg-[var(--pm-accent)] text-white text-xs sm:text-sm font-black shadow-sm hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap cursor-pointer"
             >
               <Gavel className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span>দরপ্রস্তাব দিন</span>

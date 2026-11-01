@@ -19,3 +19,9 @@
 - Tailwind: `src/styles.css` keeps the shadcn tokens and imports `src/design-system/styles/index.css` (PaikarMart theme). Their index.css must NOT import `tailwindcss` or remote fonts itself (font comes from the <link> in `src/routes/__root.tsx`).
 - The Express/Prisma backend was NOT migrated. PaikarMart services call `VITE_API_BASE_URL` (unset: falls back to origin) plus Supabase/Firebase via VITE_ vars; configure those env vars when wiring a backend.
 - `process.env.GEMINI_API_KEY` / `process.env.GOOGLE_MAPS_PLATFORM_KEY` are vite-defined to empty strings so browser code never crashes on `process.env` access.
+
+# Route + theme decisions (2026-11-01)
+
+- The router shim's nested `<Routes>` cannot match subpaths under a splat parent (it always matches the full pathname from site root), so every portal subpath is declared as a flat absolute route in `src/app/router/portal.routes.tsx` (e.g. `/b2b`, `/b2b/orders`, `/marketplace/product/:id`). Do not reintroduce nested `<Routes>` inside splat parents — they render nothing.
+- All `--pm-*` theme tokens live per theme in `src/design-system/styles/themes/*.css`; `variables.css` only aggregates `@import`s (no rules — declarations glued after imports break Lightning CSS). Shared token aliases (`--pm-text-secondary`, `--pm-text-muted`, `--pm-surface-hover`, `--pm-card-hover`, `--pm-accent-soft`, `--pm-accent-2`, `--pm-success`, `--pm-danger`) exist in every theme file; when adding a new `--pm-*` token, add it to all theme files, not just one.
+- Design direction: cleaner dark, mobile-first, single orange accent (`--pm-accent: #ff7a00`) with cyan only as sparing secondary (`--pm-accent-2`); portal-identity gradients in the marketplace hub banner are intentional exceptions.
