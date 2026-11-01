@@ -1,24 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense, useEffect, useState } from "react";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+// The PaikarMart app is a client-side SPA (it owns its own history via the
+// react-router-dom shim), so it mounts only after hydration in the browser.
+const PaikarMartApp = lazy(() => import("@/app/App"));
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Paikar Mart" },
+      {
+        name: "description",
+        content:
+          "Multi-vendor scalable marketplace platform for Bangladesh, supporting wholesale, retail, nearby shops, and services.",
+      },
+      { property: "og:title", content: "Paikar Mart" },
+      {
+        property: "og:description",
+        content:
+          "Multi-vendor scalable marketplace platform for Bangladesh, supporting wholesale, retail, nearby shops, and services.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="min-h-screen" style={{ backgroundColor: "var(--pm-bg, #fcfbf8)" }} />;
+  }
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
+    <Suspense
+      fallback={<div className="min-h-screen" style={{ backgroundColor: "var(--pm-bg, #fcfbf8)" }} />}
     >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+      <PaikarMartApp />
+    </Suspense>
   );
 }
